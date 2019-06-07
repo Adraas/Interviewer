@@ -15,6 +15,11 @@ public class QuestionnaireGroup {
     private long id;
 
     /**
+     * The ID of questionnaire group author.
+     */
+    private String authorId;
+
+    /**
      * The theme of questionnaire group.
      */
     private String theme;
@@ -23,9 +28,4 @@ public class QuestionnaireGroup {
      * The preset questionnaires of questionnaire group.
      */
     private Set<Questionnaire> questionnaires;
-
-    /**
-     * The cookie of questionnaire group author.
-     */
-    private String authorCookie;
 }

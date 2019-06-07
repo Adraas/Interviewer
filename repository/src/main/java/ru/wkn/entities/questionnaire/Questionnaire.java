@@ -15,6 +15,11 @@ public class Questionnaire {
     private long id;
 
     /**
+     * The ID of questionnaire author.
+     */
+    private String authorId;
+
+    /**
      * The title of questionnaire.
      */
     private String title;
@@ -28,9 +33,4 @@ public class Questionnaire {
      * The cookie for unique indicating questionnaire in the system.
      */
     private String cookie;
-
-    /**
-     * The cookie of questionnaire author.
-     */
-    private String authorCookie;
 }
