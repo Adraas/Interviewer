@@ -10,6 +10,11 @@ import java.util.Set;
 public class Question {
 
     /**
+     * The unique ID of question.
+     */
+    private long id;
+
+    /**
      * The question wording.
      */
     private String question;
