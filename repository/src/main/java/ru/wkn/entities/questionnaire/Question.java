@@ -1,16 +1,9 @@
 package ru.wkn.entities.questionnaire;
 
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
+import javax.persistence.Embeddable;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import java.util.Set;
 
 /**
@@ -18,35 +11,18 @@ import java.util.Set;
  *
  * @author Orin Adraas
  */
-@Entity(name = "question")
-@Table(name = "question")
+@Embeddable
 public class Question {
-
-    /**
-     * The unique ID of question.
-     */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false, insertable = false, updatable = false)
-    private long id;
-
-    /**
-     * The ID of questionnaire, to whom question belongs.
-     */
-    @Column(name = "questionnaire_id", nullable = false)
-    private long questionnaireId;
 
     /**
      * The question wording.
      */
-    @Column(name = "question_wording", unique = true, nullable = false, length = 300)
+    @Column(name = "question_wording", unique = true, nullable = false, length = 600)
     private String questionWording;
 
     /**
      * The question preset answers.
      */
     @ElementCollection(targetClass = Answer.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "answer",
-            joinColumns = {@JoinColumn(name = "question_id", referencedColumnName = "answer_wording")})
     private Set<Answer> answers;
 }
