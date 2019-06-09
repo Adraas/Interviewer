@@ -1,5 +1,8 @@
 package ru.wkn.entities.questionnaire;
 
+import ru.wkn.entities.result.Grade;
+import ru.wkn.entities.result.GradeCriteria;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,4 +40,10 @@ public class Answer {
      */
     @Column(name = "answer", nullable = false, length = 300)
     private String answerWording;
+
+    /**
+     * The grades for single answer by means specific criteria.
+     */
+    @Column(name = "grade", nullable = false)
+    private Map<GradeCriteria, Grade> grades;
 }
