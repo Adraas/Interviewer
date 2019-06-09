@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import java.util.Set;
 
 /**
@@ -28,6 +29,12 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false, insertable = false, updatable = false)
     private long id;
+
+    /**
+     * The ID of questionnaire, to whom question belongs.
+     */
+    @Column(name = "questionnaire_id", nullable = false)
+    private long questionnaireId;
 
     /**
      * The question wording.
