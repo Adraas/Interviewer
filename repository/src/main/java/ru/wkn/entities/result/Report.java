@@ -17,7 +17,7 @@ import java.util.Map;
  *
  * @author Orin Adraas
  */
-@Entity(name = "report")
+@Entity
 @Table(name = "report")
 public class Report {
 

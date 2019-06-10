@@ -16,7 +16,7 @@ import java.util.Set;
  *
  * @author Orin Adraas
  */
-@Entity(name = "questionnaire")
+@Entity
 @Table(name = "questionnaire",
         uniqueConstraints = {@UniqueConstraint(name = "questionnaire_unique",
                 columnNames = {"author_id", "title", "question"})})

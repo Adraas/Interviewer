@@ -16,7 +16,7 @@ import java.util.Set;
  *
  * @author Orin Adraas
  */
-@Entity(name = "questionnaire_group")
+@Entity
 @Table(name = "questionnaire_group")
 public class QuestionnaireGroup {
 
