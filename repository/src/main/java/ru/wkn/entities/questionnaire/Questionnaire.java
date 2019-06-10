@@ -47,10 +47,4 @@ public class Questionnaire {
      */
     @ElementCollection(targetClass = Question.class, fetch = FetchType.EAGER)
     private Set<Question> questions;
-
-    /**
-     * The cookie for unique indicating questionnaire in the system.
-     */
-    @Column(name = "cookie", unique = true, nullable = false, length = 900)
-    private String cookie;
 }

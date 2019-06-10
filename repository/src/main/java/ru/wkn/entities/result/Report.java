@@ -30,11 +30,6 @@ public class Report {
     private Map<GradeCriteria, Grade> grades;
 
     /**
-     * The cookie for unique indicating report in the system.
-     */
-    private String questionnaireCookie;
-
-    /**
      * The cookie of report author.
      */
     private String authorCookie;
