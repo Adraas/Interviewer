@@ -15,6 +15,11 @@ public class Report {
     private long id;
 
     /**
+     * The ID of report author.
+     */
+    private String authorId;
+
+    /**
      * The title of report.
      */
     private String title;
@@ -28,9 +33,4 @@ public class Report {
      * The result grades based on results of questionnaire survey by means specific criteria.
      */
     private Map<GradeCriteria, Grade> grades;
-
-    /**
-     * The cookie of report author.
-     */
-    private String authorCookie;
 }
