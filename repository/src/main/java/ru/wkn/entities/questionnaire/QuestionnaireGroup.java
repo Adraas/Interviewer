@@ -1,5 +1,9 @@
 package ru.wkn.entities.questionnaire;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +20,9 @@ import java.util.Set;
  *
  * @author Orin Adraas
  */
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "questionnaire_group")
 public class QuestionnaireGroup {
@@ -45,4 +52,17 @@ public class QuestionnaireGroup {
      */
     @OneToMany(targetEntity = Questionnaire.class, cascade = {CascadeType.PERSIST}, fetch = FetchType.EAGER)
     private Set<Questionnaire> questionnaires;
+
+    /**
+     * Initializes a newly created {@code QuestionnaireGroup} object with given parameters.
+     *
+     * @param authorId       {@link #authorId}
+     * @param theme          {@link #theme}
+     * @param questionnaires {@link #questionnaires}
+     */
+    public QuestionnaireGroup(long authorId, String theme, Set<Questionnaire> questionnaires) {
+        this.authorId = authorId;
+        this.theme = theme;
+        this.questionnaires = questionnaires;
+    }
 }

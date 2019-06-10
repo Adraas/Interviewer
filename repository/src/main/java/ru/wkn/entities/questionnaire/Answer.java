@@ -1,5 +1,9 @@
 package ru.wkn.entities.questionnaire;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import ru.wkn.entities.result.Grade;
 import ru.wkn.entities.result.GradeCriteria;
 
@@ -12,6 +16,10 @@ import java.util.Map;
  *
  * @author Orin Adraas
  */
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Embeddable
 public class Answer {
 

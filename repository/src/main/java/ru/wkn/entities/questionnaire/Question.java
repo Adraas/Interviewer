@@ -1,5 +1,10 @@
 package ru.wkn.entities.questionnaire;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embeddable;
@@ -11,6 +16,10 @@ import java.util.Set;
  *
  * @author Orin Adraas
  */
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Embeddable
 public class Question {
 

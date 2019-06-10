@@ -1,5 +1,9 @@
 package ru.wkn.entities.questionnaire;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -16,6 +20,9 @@ import java.util.Set;
  *
  * @author Orin Adraas
  */
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "questionnaire",
         uniqueConstraints = {@UniqueConstraint(name = "questionnaire_unique",
@@ -47,4 +54,17 @@ public class Questionnaire {
      */
     @ElementCollection(targetClass = Question.class, fetch = FetchType.EAGER)
     private Set<Question> questions;
+
+    /**
+     * Initializes a newly created {@code Questionnaire} object with given parameters.
+     *
+     * @param authorId {@link #authorId}
+     * @param title {@link #title}
+     * @param questions {@link #questions}
+     */
+    public Questionnaire(String authorId, String title, Set<Question> questions) {
+        this.authorId = authorId;
+        this.title = title;
+        this.questions = questions;
+    }
 }

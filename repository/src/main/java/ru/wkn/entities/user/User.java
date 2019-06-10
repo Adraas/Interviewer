@@ -1,5 +1,9 @@
 package ru.wkn.entities.user;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +16,9 @@ import javax.persistence.Table;
  *
  * @author Orin Adraas
  */
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "user")
 public class User {
@@ -47,4 +54,19 @@ public class User {
      */
     @Column(name = "cookie", unique = true, nullable = false, length = 60)
     private String cookie;
+
+    /**
+     * Initializes a newly created {@code User} object with given parameters.
+     *
+     * @param name {@link #name}
+     * @param email {@link #email}
+     * @param password {@link #password}
+     * @param cookie {@link #cookie}
+     */
+    public User(String name, String email, String password, String cookie) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.cookie = cookie;
+    }
 }
