@@ -1,6 +1,7 @@
 package ru.wkn.repository.dao.h2;
 
 import org.hibernate.Session;
+import ru.wkn.entities.questionnaire.QuestionnaireGroup;
 import ru.wkn.repository.dao.EntityInstanceType;
 
 /**
@@ -9,7 +10,7 @@ import ru.wkn.repository.dao.EntityInstanceType;
  *
  * @author Orin Adraas
  */
-public class H2QuestionnaireGroupDao extends H2Dao<H2QuestionnaireDao, Long> {
+public class H2QuestionnaireGroupDao extends H2Dao<QuestionnaireGroup, Long> {
 
     /**
      * Initializes a newly created {@code H2QuestionnaireGroupDao} object with given parameters.
@@ -18,7 +19,7 @@ public class H2QuestionnaireGroupDao extends H2Dao<H2QuestionnaireDao, Long> {
      * @param session {@link H2Dao#session}
      * @param entityInstanceType {@link H2Dao#entityInstanceType}
      */
-    public H2QuestionnaireGroupDao(Class<H2QuestionnaireDao> instanceClass, Session session,
+    public H2QuestionnaireGroupDao(Class<QuestionnaireGroup> instanceClass, Session session,
                                    EntityInstanceType entityInstanceType) {
         super(instanceClass, session, entityInstanceType);
     }
