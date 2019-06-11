@@ -16,5 +16,8 @@ public enum EntityInstanceType {
     QUESTIONNAIRE(Questionnaire.class.getAnnotation(Table.class).name()),
     QUESTIONNAIRE_GROUP(QuestionnaireGroup.class.getAnnotation(Table.class).name());
 
-    private String entityType;
+    /**
+     * The entity name as a {@code String} value.
+     */
+    private String entityName;
 }
