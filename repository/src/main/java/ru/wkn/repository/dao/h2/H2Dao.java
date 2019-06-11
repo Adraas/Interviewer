@@ -13,14 +13,34 @@ import javax.persistence.RollbackException;
 import java.io.Serializable;
 import java.util.Collection;
 
+/**
+ * The class {@code H2Dao} represents the data access object layout implementation for the H2 Database.
+ *
+ * @see IDao
+ * @author Orin Adraas
+ */
 @AllArgsConstructor
 @Log
 public class H2Dao<V, I extends Serializable> implements IDao<V, I> {
 
+    /**
+     * The meta-data about an entity object.
+     */
     private Class<V> instanceClass;
+
+    /**
+     * The object represents a connection session.
+     */
     private Session session;
+
+    /**
+     * The enum object represents an entity name
+     */
     private EntityInstanceType entityInstanceType;
 
+    /**
+     * @see IDao#create(V)
+     */
     @Override
     public boolean create(V newInstance) throws PersistenceException {
         Transaction transaction = session.beginTransaction();
@@ -36,11 +56,17 @@ public class H2Dao<V, I extends Serializable> implements IDao<V, I> {
         return true;
     }
 
+    /**
+     * @see IDao#read(I)
+     */
     @Override
     public V read(I index) {
         return session.get(instanceClass, index);
     }
 
+    /**
+     * @see IDao#update(V)
+     */
     @Override
     public boolean update(V transientInstance) throws PersistenceException {
         Transaction transaction = session.beginTransaction();
@@ -56,6 +82,9 @@ public class H2Dao<V, I extends Serializable> implements IDao<V, I> {
         return true;
     }
 
+    /**
+     * @see IDao#delete(V)
+     */
     @Override
     public boolean delete(V transientInstance) throws PersistenceException {
         Transaction transaction = session.beginTransaction();
@@ -71,10 +100,13 @@ public class H2Dao<V, I extends Serializable> implements IDao<V, I> {
         return true;
     }
 
+    /**
+     * @see IDao#getAll()
+     */
     @SuppressWarnings(value = {"unchecked"})
     @Override
     public Collection<V> getAll() {
-        Query query = session.createSQLQuery("SELECT * FROM ".concat(entityInstanceType.getEntityType()));
+        Query query = session.createSQLQuery("SELECT * FROM ".concat(entityInstanceType.getEntityName()));
         return query.getResultList();
     }
 }
