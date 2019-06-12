@@ -1,6 +1,8 @@
 package ru.wkn.repository.dao.h2;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.extern.java.Log;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -20,6 +22,7 @@ import java.util.Collection;
  * @author Orin Adraas
  */
 @AllArgsConstructor
+@Getter(value = AccessLevel.PROTECTED)
 @Log
 public class H2Dao<V, I extends Serializable> implements IDao<V, I> {
 
