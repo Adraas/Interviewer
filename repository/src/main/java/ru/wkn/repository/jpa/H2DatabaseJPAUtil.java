@@ -4,12 +4,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- * The class {@code JPAUtil} initializes configuration for a JPA ORM model with the given persistence unit name for
- * the {@code H2 Database} with the {@code Hibernate} provider.
+ * The class {@code H2DatabaseJPAUtil} initializes configuration for a JPA ORM model with the given persistence unit
+ * name for the {@code H2 Database} with the {@code Hibernate} provider.
  *
  * @author Orin Adraas
  */
-public class JPAUtil {
+public class H2DatabaseJPAUtil {
 
     /**
      * The persistence unit name indicated a JPA configuration.
