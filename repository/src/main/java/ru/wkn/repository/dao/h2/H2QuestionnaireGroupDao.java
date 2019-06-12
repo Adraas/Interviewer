@@ -12,14 +12,15 @@ import java.util.Collection;
  * the {@code QuestionnaireGroup} entities.
  *
  * @author Orin Adraas
+ * @see H2Dao
  */
 public class H2QuestionnaireGroupDao extends H2Dao<QuestionnaireGroup, Long> {
 
     /**
      * Initializes a newly created {@code H2QuestionnaireGroupDao} object with given parameters.
      *
-     * @param instanceClass {@link H2Dao#instanceClass}
-     * @param session {@link H2Dao#session}
+     * @param instanceClass      {@link H2Dao#instanceClass}
+     * @param session            {@link H2Dao#session}
      * @param entityInstanceType {@link H2Dao#entityInstanceType}
      */
     public H2QuestionnaireGroupDao(Class<QuestionnaireGroup> instanceClass, Session session,

@@ -18,8 +18,8 @@ import java.util.Collection;
 /**
  * The class {@code H2Dao} represents the data access object layout implementation for the H2 Database.
  *
- * @see IDao
  * @author Orin Adraas
+ * @see IDao
  */
 @AllArgsConstructor
 @Getter(value = AccessLevel.PROTECTED)

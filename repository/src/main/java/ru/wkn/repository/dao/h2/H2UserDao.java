@@ -11,14 +11,15 @@ import javax.persistence.Query;
  * the {@code User} entities.
  *
  * @author Orin Adraas
+ * @see H2Dao
  */
 public class H2UserDao extends H2Dao<User, Long> {
 
     /**
      * Initializes a newly created {@code H2UserDao} object with given parameters.
      *
-     * @param instanceClass {@link H2Dao#instanceClass}
-     * @param session {@link H2Dao#session}
+     * @param instanceClass      {@link H2Dao#instanceClass}
+     * @param session            {@link H2Dao#session}
      * @param entityInstanceType {@link H2Dao#entityInstanceType}
      */
     public H2UserDao(Class<User> instanceClass, Session session, EntityInstanceType entityInstanceType) {

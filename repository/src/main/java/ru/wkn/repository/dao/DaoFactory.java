@@ -13,8 +13,8 @@ import java.io.Serializable;
 /**
  * The class {@code DaoFactory} represents implementation for the DAO layout factory.
  *
- * @see IDaoFactory
  * @author Orin Adraas
+ * @see IDaoFactory
  */
 public class DaoFactory<V, I extends Serializable> implements IDaoFactory<V, I> {
 
