@@ -4,6 +4,8 @@ import org.hibernate.Session;
 import ru.wkn.entities.user.User;
 import ru.wkn.repository.dao.EntityInstanceType;
 
+import javax.persistence.Query;
+
 /**
  * The class {@code H2UserDao} represents a special case for the using {@code H2Dao} for a special needs for
  * the {@code User} entities.
@@ -21,5 +23,13 @@ public class H2UserDao extends H2Dao<User, Long> {
      */
     public H2UserDao(Class<User> instanceClass, Session session, EntityInstanceType entityInstanceType) {
         super(instanceClass, session, entityInstanceType);
+    }
+
+    public User getUserByEmailAndPassword(String email, String password) {
+        Query query = getSession().createQuery("SELECT * FROM ".concat(getEntityInstanceType().getEntityName())
+                .concat(" WHERE email = emailParameter AND password = passwordParameter"));
+        query.setParameter("emailParameter", email);
+        query.setParameter("passwordParameter", password);
+        return (User) query.getSingleResult();
     }
 }
