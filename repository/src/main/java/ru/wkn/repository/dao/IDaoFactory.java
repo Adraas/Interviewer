@@ -15,7 +15,8 @@ public interface IDaoFactory {
      *
      * @param entityInstanceType the enum object represents datasource name
      * @param session the object represents a connection session
-     * @return the newly created {@code IDao} object
+     * @return the newly created {@code IDao} object or {@code null} if there is no matching between
+     *         {@code entityInstanceType} and existed DAO implementation
      */
     IDao createDao(EntityInstanceType entityInstanceType, Session session);
 }
