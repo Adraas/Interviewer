@@ -9,28 +9,25 @@ import ru.wkn.repository.dao.h2.H2QuestionnaireGroupDao;
 import ru.wkn.repository.dao.h2.H2UserDao;
 import ru.wkn.repository.util.EntityInstanceType;
 
-import java.io.Serializable;
-
 /**
- * The class {@code DaoFactory} represents implementation for the DAO layout factory.
+ * The class {@code DaoFactory} represents the DAO layout factory implementation.
  *
  * @author Orin Adraas
  * @see IDaoFactory
  */
-public class DaoFactory<V, I extends Serializable> implements IDaoFactory<V, I> {
+public class DaoFactory implements IDaoFactory {
 
     /**
      * @see IDaoFactory#createDao(EntityInstanceType, Session)
      */
-    @SuppressWarnings(value = {"unchecked"})
     @Override
-    public IDao<V, I> createDao(EntityInstanceType entityInstanceType, Session session) {
+    public IDao createDao(EntityInstanceType entityInstanceType, Session session) {
         return entityInstanceType.equals(EntityInstanceType.USER)
-                ? (IDao<V, I>) new H2UserDao(User.class, session, entityInstanceType)
+                ? new H2UserDao(User.class, session, entityInstanceType)
                 : entityInstanceType.equals(EntityInstanceType.QUESTIONNAIRE)
-                ? (IDao<V, I>) new H2QuestionnaireDao(Questionnaire.class, session, entityInstanceType)
+                ? new H2QuestionnaireDao(Questionnaire.class, session, entityInstanceType)
                 : entityInstanceType.equals(EntityInstanceType.QUESTIONNAIRE_GROUP)
-                ? (IDao<V, I>) new H2QuestionnaireGroupDao(QuestionnaireGroup.class, session, entityInstanceType)
+                ? new H2QuestionnaireGroupDao(QuestionnaireGroup.class, session, entityInstanceType)
                 : null;
     }
 }

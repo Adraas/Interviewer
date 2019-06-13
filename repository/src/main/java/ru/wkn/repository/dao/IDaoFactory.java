@@ -3,16 +3,12 @@ package ru.wkn.repository.dao;
 import org.hibernate.Session;
 import ru.wkn.repository.util.EntityInstanceType;
 
-import java.io.Serializable;
-
 /**
- * The interface {@code IDaoFactory} represents abstract factory for the DAO layout.
+ * The interface {@code IDaoFactory} represents the abstract factory for the DAO layout.
  *
- * @param <V> the type of the persistence object
- * @param <I> the type of the index for working with persistence object
  * @author Orin Adraas
  */
-public interface IDaoFactory<V, I extends Serializable> {
+public interface IDaoFactory {
 
     /**
      * The abstract factory method for the {@code IDao} object creating.
@@ -21,5 +17,5 @@ public interface IDaoFactory<V, I extends Serializable> {
      * @param session the object represents a connection session
      * @return the newly created {@code IDao} object
      */
-    IDao<V, I> createDao(EntityInstanceType entityInstanceType, Session session);
+    IDao createDao(EntityInstanceType entityInstanceType, Session session);
 }
