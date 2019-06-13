@@ -51,7 +51,7 @@ public interface IDao<V, I extends Serializable> {
     boolean delete(V transientInstance) throws PersistenceException;
 
     /**
-     * The method for the full sample statement executing.
+     * The method for the full sample statement fetch executing.
      *
      * @return the collection of the {@code Collection} type, contains an all persistence objects from a repository
      */
