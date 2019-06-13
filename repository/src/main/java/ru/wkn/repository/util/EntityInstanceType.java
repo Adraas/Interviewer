@@ -1,4 +1,4 @@
-package ru.wkn.repository.dao;
+package ru.wkn.repository.util;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

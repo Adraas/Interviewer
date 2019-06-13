@@ -2,7 +2,7 @@ package ru.wkn.repository.dao.h2;
 
 import org.hibernate.Session;
 import ru.wkn.entities.questionnaire.QuestionnaireGroup;
-import ru.wkn.repository.dao.EntityInstanceType;
+import ru.wkn.repository.util.EntityInstanceType;
 
 import javax.persistence.Query;
 import java.util.Collection;

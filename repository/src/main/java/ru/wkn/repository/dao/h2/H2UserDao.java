@@ -3,7 +3,7 @@ package ru.wkn.repository.dao.h2;
 import lombok.extern.java.Log;
 import org.hibernate.Session;
 import ru.wkn.entities.user.User;
-import ru.wkn.repository.dao.EntityInstanceType;
+import ru.wkn.repository.util.EntityInstanceType;
 
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;

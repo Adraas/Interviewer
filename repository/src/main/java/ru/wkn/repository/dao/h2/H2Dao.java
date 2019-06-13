@@ -7,7 +7,7 @@ import lombok.extern.java.Log;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ru.wkn.exceptions.PersistenceException;
-import ru.wkn.repository.dao.EntityInstanceType;
+import ru.wkn.repository.util.EntityInstanceType;
 import ru.wkn.repository.dao.IDao;
 
 import javax.persistence.Query;

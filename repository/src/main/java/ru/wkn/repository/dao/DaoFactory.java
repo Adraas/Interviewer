@@ -7,6 +7,7 @@ import ru.wkn.entities.user.User;
 import ru.wkn.repository.dao.h2.H2QuestionnaireDao;
 import ru.wkn.repository.dao.h2.H2QuestionnaireGroupDao;
 import ru.wkn.repository.dao.h2.H2UserDao;
+import ru.wkn.repository.util.EntityInstanceType;
 
 import java.io.Serializable;
 

@@ -1,6 +1,7 @@
 package ru.wkn.repository.dao;
 
 import org.hibernate.Session;
+import ru.wkn.repository.util.EntityInstanceType;
 
 import java.io.Serializable;
 
