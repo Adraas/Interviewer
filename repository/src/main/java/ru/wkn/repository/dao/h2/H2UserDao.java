@@ -42,4 +42,11 @@ public class H2UserDao extends H2Dao<User, Long> {
             throw new ru.wkn.exceptions.PersistenceException(message, e.getCause());
         }
     }
+
+    public boolean isCookieExist(String cookie) {
+        Query query = getSession().createQuery("SELECT cookie FROM ".concat(getEntityInstanceType().getEntityName()
+                .concat(" WHERE cookie = :cookie")));
+        query.setParameter("cookie", cookie);
+        return query.getResultList().size() != 0;
+    }
 }
