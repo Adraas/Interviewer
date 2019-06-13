@@ -14,7 +14,7 @@ public interface IDaoFactory {
      * The abstract factory method for the {@code IDao} object creating.
      *
      * @param entityInstanceType the enum object represents datasource name
-     * @param session the object represents a connection session
+     * @param session            the object represents a connection session
      * @return the newly created {@code IDao} object or {@code null} if there is no matching between
      *         {@code entityInstanceType} and existed DAO implementation
      */
