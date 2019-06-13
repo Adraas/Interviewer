@@ -43,7 +43,7 @@ public class H2UserDao extends H2Dao<User, Long> {
         }
     }
 
-    public boolean isCookieExist(String cookie) {
+    public boolean isCookieExists(String cookie) {
         Query query = getSession().createQuery("SELECT cookie FROM ".concat(getEntityInstanceType().getEntityName()
                 .concat(" WHERE cookie = :cookie")));
         query.setParameter("cookie", cookie);

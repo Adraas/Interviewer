@@ -18,13 +18,13 @@ public class UserService extends Service<User, Long> {
         return ((H2UserDao) getDao()).getUserByEmailAndPassword(email, password);
     }
 
-    public String registryCookie(String name, String email, String password) {
+    public String generateCookie(String name, String email, String password) {
         byte[] startMessage = name.concat(email).concat(password).getBytes();
         String codeMessage = null;
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("MD5");
             codeMessage = new String(messageDigest.digest(startMessage));
-            while (((H2UserDao) getDao()).isCookieExist(codeMessage)) {
+            while (((H2UserDao) getDao()).isCookieExists(codeMessage)) {
                 codeMessage = new String(messageDigest.digest(new String(startMessage).concat(codeMessage).getBytes()));
             }
         } catch (NoSuchAlgorithmException e) {
