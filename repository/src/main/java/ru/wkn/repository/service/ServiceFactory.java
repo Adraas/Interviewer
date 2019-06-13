@@ -6,8 +6,17 @@ import ru.wkn.entities.user.User;
 import ru.wkn.repository.dao.IDao;
 import ru.wkn.repository.util.EntityInstanceType;
 
+/**
+ * The class {@code ServiceFactory} represents the service layout factory implementation.
+ *
+ * @author Orin Adraas
+ * @see IServiceFactory
+ */
 public class ServiceFactory implements IServiceFactory {
 
+    /**
+     * @see IServiceFactory#createService(EntityInstanceType, IDao)
+     */
     @SuppressWarnings(value = {"unchecked"})
     @Override
     public IService createService(EntityInstanceType entityInstanceType, IDao dao) {
