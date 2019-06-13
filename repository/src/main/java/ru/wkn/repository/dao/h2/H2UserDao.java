@@ -9,7 +9,7 @@ import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
 /**
- * The class {@code H2UserDao} represents a special case for the using {@code H2Dao} for a special needs for
+ * The class {@code H2UserDao} represents a special case for the {@code H2Dao} using for a special needs for
  * the {@code User} entities.
  *
  * @author Orin Adraas
@@ -19,7 +19,7 @@ import javax.persistence.Query;
 public class H2UserDao extends H2Dao<User, Long> {
 
     /**
-     * Initializes a newly created {@code H2UserDao} object with given parameters.
+     * Initializes a newly created {@code H2UserDao} object with the given parameters.
      *
      * @param instanceClass      {@link H2Dao#instanceClass}
      * @param session            {@link H2Dao#session}
@@ -29,6 +29,15 @@ public class H2UserDao extends H2Dao<User, Long> {
         super(instanceClass, session, entityInstanceType);
     }
 
+    /**
+     * The method for the getting {@code User} object by the given email and password (log-in process, for example)
+     * from a repository.
+     *
+     * @param email    the given email for the searching
+     * @param password the given password for the searching
+     * @return the searched object, casted to the {@code User} type
+     * @throws ru.wkn.exceptions.PersistenceException thrown if some problems with cortege searching
+     */
     public User getUserByEmailAndPassword(String email, String password) throws ru.wkn.exceptions.PersistenceException {
         Query query = getSession().createQuery("SELECT * FROM ".concat(getEntityInstanceType().getEntityName())
                 .concat(" WHERE email = :email AND password = :password"));
@@ -43,6 +52,12 @@ public class H2UserDao extends H2Dao<User, Long> {
         }
     }
 
+    /**
+     * The method for the checking to existence for the given cookie value.
+     *
+     * @param cookie the given cookie value as the {@code String} for the checking
+     * @return {@code true} if the given cookie value is exists in a repository, else - {@code false}
+     */
     public boolean isCookieExists(String cookie) {
         Query query = getSession().createQuery("SELECT cookie FROM ".concat(getEntityInstanceType().getEntityName()
                 .concat(" WHERE cookie = :cookie")));
