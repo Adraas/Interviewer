@@ -1,9 +1,11 @@
 package ru.wkn.repository.dao.h2;
 
+import lombok.extern.java.Log;
 import org.hibernate.Session;
 import ru.wkn.entities.user.User;
 import ru.wkn.repository.dao.EntityInstanceType;
 
+import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
 /**
@@ -13,6 +15,7 @@ import javax.persistence.Query;
  * @author Orin Adraas
  * @see H2Dao
  */
+@Log
 public class H2UserDao extends H2Dao<User, Long> {
 
     /**
@@ -26,11 +29,17 @@ public class H2UserDao extends H2Dao<User, Long> {
         super(instanceClass, session, entityInstanceType);
     }
 
-    public User getUserByEmailAndPassword(String email, String password) {
+    public User getUserByEmailAndPassword(String email, String password) throws ru.wkn.exceptions.PersistenceException {
         Query query = getSession().createQuery("SELECT * FROM ".concat(getEntityInstanceType().getEntityName())
-                .concat(" WHERE email = emailParameter AND password = passwordParameter"));
-        query.setParameter("emailParameter", email);
-        query.setParameter("passwordParameter", password);
-        return (User) query.getSingleResult();
+                .concat(" WHERE email = :email AND password = :password"));
+        query.setParameter("email", email);
+        query.setParameter("password", password);
+        try {
+            return (User) query.getSingleResult();
+        } catch (PersistenceException e) {
+            String message = e.getMessage();
+            log.warning(message);
+            throw new ru.wkn.exceptions.PersistenceException(message, e.getCause());
+        }
     }
 }
