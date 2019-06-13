@@ -17,6 +17,9 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/questionnaire_survey"/>
             <property name="javax.persistence.jdbc.user" value="user"/>
             <property name="javax.persistence.jdbc.password" value="user"/>
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="hibernate.hikari.dataSourceClassName" value="org.h2.jdbcx.JdbcDataSource"/>
         </properties>
     </persistence-unit>
 </persistence>
