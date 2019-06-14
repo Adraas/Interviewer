@@ -7,11 +7,6 @@
     <groupId>ru.wkn</groupId>
     <artifactId>interviewer</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>repository</module>
-        <module>questionnaire-survey</module>
-        <module>web-interface</module>
-    </modules>
     <packaging>pom</packaging>
 
     <name>Interviewer application</name>
@@ -51,6 +46,13 @@
             </plugin>
         </plugins>
     </build>
+
+    <modules>
+        <module>repository</module>
+        <module>questionnaire-survey</module>
+        <module>web-interface</module>
+        <module>interviewer-entities</module>
+    </modules>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
