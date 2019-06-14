@@ -2,12 +2,6 @@ package ru.wkn.repository.util;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import ru.wkn.entities.questionnaire.Questionnaire;
-import ru.wkn.entities.questionnaire.QuestionnaireGroup;
-import ru.wkn.entities.result.Report;
-import ru.wkn.entities.user.User;
-
-import javax.persistence.Table;
 
 /**
  * The enum {@code EntityInstanceType} contains values represented entity names for a repository.
@@ -21,22 +15,22 @@ public enum EntityInstanceType {
     /**
      * The {@code User} entity.
      */
-    USER(User.class.getAnnotation(Table.class).name()),
+    USER("user"),
 
     /**
      * The {@code Questionnaire} entity.
      */
-    QUESTIONNAIRE(Questionnaire.class.getAnnotation(Table.class).name()),
+    QUESTIONNAIRE("questionnaire"),
 
     /**
      * The {@code QuestionnaireGroup} entity.
      */
-    QUESTIONNAIRE_GROUP(QuestionnaireGroup.class.getAnnotation(Table.class).name()),
+    QUESTIONNAIRE_GROUP("questionnaire_group"),
 
     /**
      * The {@code Report} entity.
      */
-    REPORT(Report.class.getAnnotation(Table.class).name());
+    REPORT("report");
 
     /**
      * The entity name as a {@code String} value.
