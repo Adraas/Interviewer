@@ -9,6 +9,7 @@
         <class>ru.wkn.entities.user.User</class>
         <class>ru.wkn.entities.questionnaire.Questionnaire</class>
         <class>ru.wkn.entities.questionnaire.QuestionnaireGroup</class>
+        <class>ru.wkn.entities.result.Report</class>
 
         <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
 

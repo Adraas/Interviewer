@@ -3,9 +3,11 @@ package ru.wkn.repository.dao;
 import org.hibernate.Session;
 import ru.wkn.entities.questionnaire.Questionnaire;
 import ru.wkn.entities.questionnaire.QuestionnaireGroup;
+import ru.wkn.entities.result.Report;
 import ru.wkn.entities.user.User;
 import ru.wkn.repository.dao.h2.H2QuestionnaireDao;
 import ru.wkn.repository.dao.h2.H2QuestionnaireGroupDao;
+import ru.wkn.repository.dao.h2.H2ReportDao;
 import ru.wkn.repository.dao.h2.H2UserDao;
 import ru.wkn.repository.util.EntityInstanceType;
 
@@ -28,6 +30,8 @@ public class DaoFactory implements IDaoFactory {
                 ? new H2QuestionnaireDao(Questionnaire.class, session, entityInstanceType)
                 : entityInstanceType.equals(EntityInstanceType.QUESTIONNAIRE_GROUP)
                 ? new H2QuestionnaireGroupDao(QuestionnaireGroup.class, session, entityInstanceType)
+                : entityInstanceType.equals(EntityInstanceType.REPORT)
+                ? new H2ReportDao(Report.class, session, entityInstanceType)
                 : null;
     }
 }

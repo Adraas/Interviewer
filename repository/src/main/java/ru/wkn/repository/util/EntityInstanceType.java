@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import ru.wkn.entities.questionnaire.Questionnaire;
 import ru.wkn.entities.questionnaire.QuestionnaireGroup;
+import ru.wkn.entities.result.Report;
 import ru.wkn.entities.user.User;
 
 import javax.persistence.Table;
@@ -30,7 +31,12 @@ public enum EntityInstanceType {
     /**
      * The {@code QuestionnaireGroup} entity.
      */
-    QUESTIONNAIRE_GROUP(QuestionnaireGroup.class.getAnnotation(Table.class).name());
+    QUESTIONNAIRE_GROUP(QuestionnaireGroup.class.getAnnotation(Table.class).name()),
+
+    /**
+     * The {@code Report} entity.
+     */
+    REPORT(Report.class.getAnnotation(Table.class).name());
 
     /**
      * The entity name as a {@code String} value.
