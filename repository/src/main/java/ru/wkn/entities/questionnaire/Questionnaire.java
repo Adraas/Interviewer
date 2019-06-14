@@ -41,7 +41,7 @@ public class Questionnaire {
      * The ID of questionnaire author.
      */
     @Column(name = "author_id", nullable = false)
-    private String authorId;
+    private long authorId;
 
     /**
      * The title of questionnaire.
@@ -62,7 +62,7 @@ public class Questionnaire {
      * @param title {@link #title}
      * @param questions {@link #questions}
      */
-    public Questionnaire(String authorId, String title, Set<Question> questions) {
+    public Questionnaire(long authorId, String title, Set<Question> questions) {
         this.authorId = authorId;
         this.title = title;
         this.questions = questions;
