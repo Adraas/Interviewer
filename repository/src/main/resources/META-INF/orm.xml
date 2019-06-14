@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm
+                 http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd"
+                 version="2.1">
+    <entity class="ru.wkn.entities.user.User" cacheable="true">
+        <attributes>
+            <id name="id" access="FIELD">
+                <column name="id" unique="true" nullable="false" insertable="false" updatable="false"/>
+                <generated-value strategy="IDENTITY"/>
+            </id>
+            <basic name="name" access="FIELD">
+                <column name="name" nullable="false" length="60"/>
+            </basic>
+            <basic name="email" access="FIELD">
+                <column name="email" unique="true" nullable="false" length="60"/>
+            </basic>
+            <basic name="password" access="FIELD">
+                <column name="password" nullable="false" length="60"/>
+            </basic>
+            <basic name="cookie" access="FIELD">
+                <column name="cookie" unique="true" nullable="false" length="60"/>
+            </basic>
+        </attributes>
+    </entity>
+
+    <entity class="ru.wkn.entities.questionnaire.Questionnaire" cacheable="true">
+        <attributes>
+            <id name="id" access="FIELD">
+                <column name="id" unique="true" nullable="false" insertable="false" updatable="false"/>
+                <generated-value strategy="IDENTITY"/>
+            </id>
+            <basic name="authorId" access="FIELD">
+                <column name="author_id" nullable="false"/>
+            </basic>
+            <basic name="title" access="FIELD">
+                <column name="title" nullable="false" length="100"/>
+            </basic>
+            <element-collection name="questions" access="FIELD" target-class="ru.wkn.entities.questionnaire.Question"
+                                fetch="EAGER"/>
+        </attributes>
+    </entity>
+    <entity class="ru.wkn.entities.questionnaire.QuestionnaireGroup" cacheable="true">
+        <attributes>
+            <id name="id" access="FIELD">
+                <column name="id" unique="true" nullable="false" insertable="false" updatable="false"/>
+                <generated-value strategy="IDENTITY"/>
+            </id>
+            <basic name="authorId" access="FIELD">
+                <column name="author_id" nullable="false"/>
+            </basic>
+            <basic name="theme" access="FIELD">
+                <column name="theme" nullable="false" length="30"/>
+            </basic>
+            <one-to-many name="questionnaires" target-entity="ru.wkn.entities.questionnaire.Questionnaire"
+                         fetch="EAGER">
+                <cascade>
+                    <cascade-persist/>
+                </cascade>
+            </one-to-many>
+        </attributes>
+    </entity>
+
+    <entity class="ru.wkn.entities.result.Report" cacheable="true">
+        <attributes>
+            <id name="id" access="FIELD">
+                <column name="id" unique="true" nullable="false" insertable="false" updatable="false"/>
+                <generated-value strategy="IDENTITY"/>
+            </id>
+            <basic name="authorId" access="FIELD">
+                <column name="author_id" nullable="false"/>
+            </basic>
+            <basic name="title" access="FIELD">
+                <column name="title" nullable="false" length="100"/>
+            </basic>
+            <basic name="information" access="FIELD">
+                <column name="information" nullable="false" length="1000"/>
+            </basic>
+            <element-collection name="grades" target-class="ru.wkn.entities.result.Grade" fetch="EAGER">
+                <enumerated>STRING</enumerated>
+            </element-collection>
+        </attributes>
+    </entity>
+
+    <embeddable class="ru.wkn.entities.questionnaire.Answer">
+        <attributes>
+            <basic name="answerWording" access="FIELD">
+                <column name="answer_wording" nullable="false" length="300"/>
+            </basic>
+            <element-collection name="grades" target-class="ru.wkn.entities.result.Grade" fetch="EAGER">
+                <enumerated>STRING</enumerated>
+            </element-collection>
+        </attributes>
+    </embeddable>
+    <embeddable class="ru.wkn.entities.questionnaire.Question">
+        <attributes>
+            <basic name="questionWording" access="FIELD">
+                <column name="question_wording" nullable="false" length="600"/>
+            </basic>
+            <element-collection name="grades" target-class="ru.wkn.entities.questionnaire.Answer" fetch="EAGER"/>
+        </attributes>
+    </embeddable>
+</entity-mappings>

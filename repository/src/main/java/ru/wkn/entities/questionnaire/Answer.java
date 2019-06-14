@@ -7,12 +7,6 @@ import lombok.Setter;
 import ru.wkn.entities.result.Grade;
 import ru.wkn.entities.result.GradeCriteria;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Embeddable;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import java.util.Map;
 
 /**
@@ -24,19 +18,15 @@ import java.util.Map;
 @AllArgsConstructor
 @Getter
 @Setter
-@Embeddable
 public class Answer {
 
     /**
      * The answer wording.
      */
-    @Column(name = "answer_wording", nullable = false, length = 300)
     private String answerWording;
 
     /**
      * The grades for single answer by means specific criteria.
      */
-    @ElementCollection(targetClass = Grade.class, fetch = FetchType.EAGER)
-    @Enumerated(value = EnumType.STRING)
     private Map<GradeCriteria, Grade> grades;
 }
