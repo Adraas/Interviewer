@@ -26,7 +26,7 @@ public class Answer {
     /**
      * The answer wording.
      */
-    @Column(name = "answer", nullable = false, length = 300)
+    @Column(name = "answer_wording", nullable = false, length = 300)
     private String answerWording;
 
     /**
