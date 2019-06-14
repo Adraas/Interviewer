@@ -31,7 +31,7 @@ public class QuestionnaireGroupService extends Service<QuestionnaireGroup, Long>
      * @param index the given author's (existed {@code User} object) index
      * @return the searched objects collection as the {@code Collection} type
      */
-    public Collection<QuestionnaireGroup> getQuestionnaireGroupByAuthorId(Long index) {
-        return ((H2QuestionnaireGroupDao) getDao()).getQuestionnaireGroupByAuthorId(index);
+    public Collection<QuestionnaireGroup> getQuestionnaireGroupsByAuthorId(Long index) {
+        return ((H2QuestionnaireGroupDao) getDao()).getQuestionnaireGroupsByAuthorId(index);
     }
 }
