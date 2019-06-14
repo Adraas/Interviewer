@@ -5,6 +5,7 @@
                  http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd"
                  version="2.1">
     <entity class="ru.wkn.entities.user.User" cacheable="true">
+        <table name="user"/>
         <attributes>
             <id name="id" access="FIELD">
                 <column name="id" unique="true" nullable="false" insertable="false" updatable="false"/>
@@ -26,6 +27,12 @@
     </entity>
 
     <entity class="ru.wkn.entities.questionnaire.Questionnaire" cacheable="true">
+        <table name="questionnaire">
+            <unique-constraint name="questionnaire_unique">
+                <column-name>author_id</column-name>
+                <column-name>title</column-name>
+            </unique-constraint>
+        </table>
         <attributes>
             <id name="id" access="FIELD">
                 <column name="id" unique="true" nullable="false" insertable="false" updatable="false"/>
@@ -42,6 +49,12 @@
         </attributes>
     </entity>
     <entity class="ru.wkn.entities.questionnaire.QuestionnaireGroup" cacheable="true">
+        <table name="questionnaire_group">
+            <unique-constraint name="questionnaire_group_unique">
+                <column-name>author_id</column-name>
+                <column-name>theme</column-name>
+            </unique-constraint>
+        </table>
         <attributes>
             <id name="id" access="FIELD">
                 <column name="id" unique="true" nullable="false" insertable="false" updatable="false"/>
@@ -63,6 +76,7 @@
     </entity>
 
     <entity class="ru.wkn.entities.result.Report" cacheable="true">
+        <table name="report"/>
         <attributes>
             <id name="id" access="FIELD">
                 <column name="id" unique="true" nullable="false" insertable="false" updatable="false"/>
