@@ -8,7 +8,7 @@ import ru.wkn.repository.util.DAORepository;
 import ru.wkn.repository.util.EntityInstanceType;
 
 /**
- * The class {@code RepositoryFacade} represents Facade pattern for the repository module.
+ * The class {@code RepositoryFacade} represents the facade pattern for this module.
  *
  * @author Orin Adraas
  */
