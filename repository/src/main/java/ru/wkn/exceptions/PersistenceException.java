@@ -1,8 +1,8 @@
 package ru.wkn.exceptions;
 
 /**
- * The class {@code PersistenceException} represents custom exception for indicating violations in the persistence
- * context.
+ * The class {@code PersistenceException} represents the custom exception for the indicating violations in the
+ * persistence context.
  *
  * @author Orin Adraas
  */
