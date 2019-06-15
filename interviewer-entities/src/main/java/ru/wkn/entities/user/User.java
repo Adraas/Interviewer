@@ -15,32 +15,33 @@ import lombok.Setter;
 public class User {
 
     /**
-     * The unique ID of user.
+     * The unique ID of an user.
      */
     private long id;
 
     /**
-     * The pseudo-name or real name of user.
+     * The pseudo-name or real name of an user.
      */
     private String name;
 
     /**
-     * The email of user.
+     * The email of an user.
      */
     private String email;
 
     /**
-     * The password of user account.
+     * The password of an user account.
      */
     private String password;
 
     /**
-     * The cookie for the unique indicating user in the system.
+     * The cookie for the unique indicating an user in the system.
      */
     private String cookie;
 
     /**
-     * Initializes a newly created {@code User} object with given parameters.
+     * Initializes a newly created {@code User} object with the given parameter assignments to the fields of
+     * an {@code User} object.
      *
      * @param name {@link #name}
      * @param email {@link #email}

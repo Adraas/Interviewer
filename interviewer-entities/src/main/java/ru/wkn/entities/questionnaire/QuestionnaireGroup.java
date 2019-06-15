@@ -37,7 +37,8 @@ public class QuestionnaireGroup {
     private Set<Questionnaire> questionnaires;
 
     /**
-     * Initializes a newly created {@code QuestionnaireGroup} object with given parameters.
+     * Initializes a newly created {@code QuestionnaireGroup} object with the given parameter assignments to the fields
+     * of an {@code QuestionnaireGroup} object.
      *
      * @param authorId       {@link #authorId}
      * @param theme          {@link #theme}

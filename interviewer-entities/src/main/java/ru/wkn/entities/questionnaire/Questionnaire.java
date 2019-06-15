@@ -37,7 +37,8 @@ public class Questionnaire {
     private Set<Question> questions;
 
     /**
-     * Initializes a newly created {@code Questionnaire} object with given parameters.
+     * Initializes a newly created {@code Questionnaire} object with the given parameter assignments to the fields of
+     * an {@code Questionnaire} object.
      *
      * @param authorId {@link #authorId}
      * @param title {@link #title}
