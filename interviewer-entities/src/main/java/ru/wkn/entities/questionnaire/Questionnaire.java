@@ -4,6 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ru.wkn.entities.result.GradeCriteria;
 
 import java.util.Set;
 
@@ -39,16 +40,23 @@ public class Questionnaire {
     private Set<Question> questions;
 
     /**
+     * The preset accessed {@code GradeCriteria} enum types for a single current questionnaire.
+     */
+    private Set<GradeCriteria> gradeCriteria;
+
+    /**
      * Initializes a newly created {@code Questionnaire} object with the given parameter assignments to the fields of
      * an {@code Questionnaire} object.
      *
-     * @param authorId {@link #authorId}
-     * @param title {@link #title}
-     * @param questions {@link #questions}
+     * @param authorId      {@link #authorId}
+     * @param title         {@link #title}
+     * @param questions     {@link #questions}
+     * @param gradeCriteria {@link #gradeCriteria}
      */
-    public Questionnaire(long authorId, String title, Set<Question> questions) {
+    public Questionnaire(long authorId, String title, Set<Question> questions, Set<GradeCriteria> gradeCriteria) {
         this.authorId = authorId;
         this.title = title;
         this.questions = questions;
+        this.gradeCriteria = gradeCriteria;
     }
 }
