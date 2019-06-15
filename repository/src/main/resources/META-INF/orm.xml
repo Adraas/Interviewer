@@ -46,6 +46,10 @@
             </basic>
             <element-collection name="questions" access="FIELD" target-class="ru.wkn.entities.questionnaire.Question"
                                 fetch="EAGER"/>
+            <element-collection name="gradeCriteria" access="FIELD"
+                                target-class="ru.wkn.entities.result.GradeCriteria" fetch="EAGER">
+                <enumerated>STRING</enumerated>
+            </element-collection>
         </attributes>
     </entity>
     <entity class="ru.wkn.entities.questionnaire.QuestionnaireGroup" cacheable="true">
@@ -92,7 +96,9 @@
                 <column name="information" nullable="false" length="1000"/>
             </basic>
             <element-collection name="grades" target-class="ru.wkn.entities.result.Grade" fetch="EAGER">
-                <enumerated>STRING</enumerated>
+                <map-key-enumerated>STRING</map-key-enumerated>
+                <map-key-column name="grade_criteria" unique="true" nullable="false" length="20"/>
+                <column name="grade" length="20"/>
             </element-collection>
         </attributes>
     </entity>
@@ -103,7 +109,9 @@
                 <column name="answer_wording" nullable="false" length="300"/>
             </basic>
             <element-collection name="grades" target-class="ru.wkn.entities.result.Grade" fetch="EAGER">
-                <enumerated>STRING</enumerated>
+                <map-key-enumerated>STRING</map-key-enumerated>
+                <map-key-column name="answer_grade_criteria" unique="true" nullable="false" length="20"/>
+                <column name="answer_grade" length="20"/>
             </element-collection>
         </attributes>
     </embeddable>
