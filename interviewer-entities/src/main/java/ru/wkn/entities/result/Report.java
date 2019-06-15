@@ -1,5 +1,9 @@
 package ru.wkn.entities.result;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.Map;
 
 /**
@@ -7,6 +11,9 @@ import java.util.Map;
  *
  * @author Orin Adraas
  */
+@NoArgsConstructor
+@Getter
+@Setter
 public class Report {
 
     /**
@@ -33,4 +40,20 @@ public class Report {
      * The result grades based on results of questionnaire survey by means specific criteria.
      */
     private Map<GradeCriteria, Grade> grades;
+
+    /**
+     * Initializes a newly created {@code Report} object with the given parameter assignments to the fields of an
+     * {@code Report} object.
+     *
+     * @param authorId    {@link #authorId}
+     * @param title       {@link #title}
+     * @param information {@link #information}
+     * @param grades      {@link #grades}
+     */
+    public Report(String authorId, String title, String information, Map<GradeCriteria, Grade> grades) {
+        this.authorId = authorId;
+        this.title = title;
+        this.information = information;
+        this.grades = grades;
+    }
 }

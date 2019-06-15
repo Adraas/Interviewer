@@ -1,6 +1,7 @@
 package ru.wkn.entities.questionnaire;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +17,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter
 @Setter
+@EqualsAndHashCode
 public class Question {
 
     /**
@@ -24,7 +26,7 @@ public class Question {
     private String questionWording;
 
     /**
-     * The question preset answers.
+     * The preset question answers.
      */
     private Set<Answer> answers;
 }
