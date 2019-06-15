@@ -43,10 +43,10 @@ public class User {
      * Initializes a newly created {@code User} object with the given parameter assignments to the fields of
      * an {@code User} object.
      *
-     * @param name {@link #name}
-     * @param email {@link #email}
+     * @param name     {@link #name}
+     * @param email    {@link #email}
      * @param password {@link #password}
-     * @param cookie {@link #cookie}
+     * @param cookie   {@link #cookie}
      */
     public User(String name, String email, String password, String cookie) {
         this.name = name;
