@@ -33,6 +33,12 @@
                 <column-name>title</column-name>
             </unique-constraint>
         </table>
+        <entity-listeners>
+            <entity-listener class="ru.wkn.repository.listeners.QuestionnaireListener">
+                <pre-persist method-name="updateAnswerGradeCriteria"/>
+                <pre-update method-name="updateAnswerGradeCriteria"/>
+            </entity-listener>
+        </entity-listeners>
         <attributes>
             <id name="id" access="FIELD">
                 <column name="id" unique="true" nullable="false" insertable="false" updatable="false"/>
@@ -71,9 +77,10 @@
                 <column name="theme" nullable="false" length="30"/>
             </basic>
             <one-to-many name="questionnaires" target-entity="ru.wkn.entities.questionnaire.Questionnaire"
-                         fetch="EAGER">
+                         fetch="EAGER" access="FIELD">
                 <cascade>
                     <cascade-persist/>
+                    <cascade-refresh/>
                 </cascade>
             </one-to-many>
         </attributes>
