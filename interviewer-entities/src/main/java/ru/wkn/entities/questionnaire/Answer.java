@@ -5,8 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.wkn.entities.result.Grade;
-import ru.wkn.entities.result.GradeCriteria;
 
 import java.util.Map;
 
@@ -30,5 +28,5 @@ public class Answer {
     /**
      * The grades for a single answer by means specific criteria.
      */
-    private Map<GradeCriteria, Grade> grades;
+    private Map<String, Integer> grades;
 }

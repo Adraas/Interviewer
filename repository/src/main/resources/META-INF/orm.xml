@@ -102,10 +102,9 @@
             <basic name="information" access="FIELD">
                 <column name="information" nullable="false" length="1000"/>
             </basic>
-            <element-collection name="grades" access="FIELD" target-class="ru.wkn.entities.result.Grade" fetch="EAGER">
-                <map-key-enumerated>STRING</map-key-enumerated>
+            <element-collection name="grades" access="FIELD" target-class="java.lang.String" fetch="EAGER">
                 <map-key-column name="grade_criteria" unique="true" nullable="false" length="20"/>
-                <column name="grade" length="20"/>
+                <column name="grade"/>
             </element-collection>
         </attributes>
     </entity>
@@ -134,10 +133,9 @@
             <basic name="answerWording" access="FIELD">
                 <column name="answer_wording" nullable="false" length="300"/>
             </basic>
-            <element-collection name="grades" target-class="ru.wkn.entities.result.Grade" fetch="EAGER">
-                <map-key-enumerated>STRING</map-key-enumerated>
+            <element-collection name="grades" target-class="java.lang.String" fetch="EAGER">
                 <map-key-column name="answer_grade_criteria" unique="true" nullable="false" length="20"/>
-                <column name="answer_grade" length="20"/>
+                <column name="answer_grade"/>
             </element-collection>
         </attributes>
     </embeddable>

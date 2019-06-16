@@ -4,7 +4,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.wkn.entities.result.GradeCriteria;
 
 import java.util.Map;
 import java.util.Set;
@@ -41,10 +40,10 @@ public class Questionnaire {
     private Set<Question> questions;
 
     /**
-     * The preset analytical information containing {@code GradeCriteria} enum types and appropriate them
+     * The preset analytical information containing grade criteria {@code String} values and appropriate them
      * {@code AnalyticalInformation} objects.
      */
-    private Map<GradeCriteria, Set<AnalyticalInformation<Integer>>> analyticalInformation;
+    private Map<String, Set<AnalyticalInformation<Integer>>> analyticalInformation;
 
     /**
      * Initializes a newly created {@code Questionnaire} object with the given parameter assignments to the fields of
@@ -56,7 +55,7 @@ public class Questionnaire {
      * @param analyticalInformation {@link #analyticalInformation}
      */
     public Questionnaire(long authorId, String title, Set<Question> questions,
-                         Map<GradeCriteria, Set<AnalyticalInformation<Integer>>> analyticalInformation) {
+                         Map<String, Set<AnalyticalInformation<Integer>>> analyticalInformation) {
         this.authorId = authorId;
         this.title = title;
         this.questions = questions;

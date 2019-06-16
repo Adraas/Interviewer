@@ -39,7 +39,7 @@ public class Report {
     /**
      * The result grades based on results of questionnaire survey by means specific criteria.
      */
-    private Map<GradeCriteria, Grade> grades;
+    private Map<String, Integer> grades;
 
     /**
      * Initializes a newly created {@code Report} object with the given parameter assignments to the fields of an
@@ -51,7 +51,7 @@ public class Report {
      * @param grades      {@link #grades}
      */
     @SuppressWarnings(value = {"unused"})
-    public Report(String authorId, String title, String information, Map<GradeCriteria, Grade> grades) {
+    public Report(String authorId, String title, String information, Map<String, Integer> grades) {
         this.authorId = authorId;
         this.title = title;
         this.information = information;
