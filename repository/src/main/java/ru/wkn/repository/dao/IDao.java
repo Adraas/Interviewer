@@ -20,7 +20,7 @@ public interface IDao<V, I extends Serializable> {
      *
      * @param newInstance the instance of the persistence object
      * @return {@code true} if the object was saved success in a repository, else - {@code false}
-     * @throws PersistenceException thrown if some problems with object mapping
+     * @throws PersistenceException thrown if some problems with the object mapping
      */
     boolean create(V newInstance) throws PersistenceException;
 
@@ -37,7 +37,7 @@ public interface IDao<V, I extends Serializable> {
      *
      * @param transientInstance the instance of the persistence object containing updated state
      * @return {@code true} if the object was updated success in a repository, else - {@code false}
-     * @throws PersistenceException thrown if some problems with object mapping
+     * @throws PersistenceException thrown if some problems with the object mapping
      */
     boolean update(V transientInstance) throws PersistenceException;
 
@@ -46,7 +46,7 @@ public interface IDao<V, I extends Serializable> {
      *
      * @param transientInstance the instance of the persistence object to be removed
      * @return {@code true} if the object was deleted success from a repository, else - {@code false}
-     * @throws PersistenceException thrown if some problems with object mapping
+     * @throws PersistenceException thrown if some problems was occurred with the object mapping
      */
     boolean delete(V transientInstance) throws PersistenceException;
 
