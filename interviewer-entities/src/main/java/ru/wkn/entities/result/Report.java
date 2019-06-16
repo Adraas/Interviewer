@@ -24,7 +24,7 @@ public class Report {
     /**
      * The ID of report author.
      */
-    private String authorId;
+    private long authorId;
 
     /**
      * The title of report.
@@ -51,7 +51,7 @@ public class Report {
      * @param grades      {@link #grades}
      */
     @SuppressWarnings(value = {"unused"})
-    public Report(String authorId, String title, String information, Map<String, Integer> grades) {
+    public Report(long authorId, String title, String information, Map<String, Integer> grades) {
         this.authorId = authorId;
         this.title = title;
         this.information = information;
