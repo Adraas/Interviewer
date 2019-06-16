@@ -43,7 +43,7 @@ public class Questionnaire {
      * The preset analytical information containing grade criteria {@code String} values and appropriate them
      * {@code AnalyticalInformation} objects.
      */
-    private Map<String, Set<AnalyticalInformation<Integer>>> analyticalInformation;
+    private Map<String, Set<AnalyticalInformation>> analyticalInformation;
 
     /**
      * Initializes a newly created {@code Questionnaire} object with the given parameter assignments to the fields of
@@ -55,7 +55,7 @@ public class Questionnaire {
      * @param analyticalInformation {@link #analyticalInformation}
      */
     public Questionnaire(long authorId, String title, Set<Question> questions,
-                         Map<String, Set<AnalyticalInformation<Integer>>> analyticalInformation) {
+                         Map<String, Set<AnalyticalInformation>> analyticalInformation) {
         this.authorId = authorId;
         this.title = title;
         this.questions = questions;
