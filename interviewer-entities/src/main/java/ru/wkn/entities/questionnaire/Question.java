@@ -9,7 +9,7 @@ import lombok.Setter;
 import java.util.Set;
 
 /**
- * The class {@code Question} represents single questionnaire's question wording with preset answers.
+ * The class {@code Question} represents a single questionnaire's question wording with a preset answers.
  *
  * @author Orin Adraas
  */

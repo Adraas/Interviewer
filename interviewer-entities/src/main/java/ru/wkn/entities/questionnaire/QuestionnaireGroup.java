@@ -7,7 +7,7 @@ import lombok.Setter;
 import java.util.Set;
 
 /**
- * The class {@code QuestionnaireGroup} represents questionnaire group.
+ * The class {@code QuestionnaireGroup} represents a questionnaire group.
  *
  * @author Orin Adraas
  */
@@ -17,22 +17,22 @@ import java.util.Set;
 public class QuestionnaireGroup {
 
     /**
-     * The unique ID of questionnaire group.
+     * The unique ID of a questionnaire group.
      */
     private long id;
 
     /**
-     * The ID of questionnaire group author.
+     * The ID of a questionnaire group author.
      */
     private long authorId;
 
     /**
-     * The theme of questionnaire group.
+     * The theme of a questionnaire group.
      */
     private String theme;
 
     /**
-     * The preset questionnaires of questionnaire group.
+     * The preset questionnaires of a questionnaire group.
      */
     private Set<Questionnaire> questionnaires;
 

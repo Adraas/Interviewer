@@ -11,7 +11,7 @@ import ru.wkn.entities.result.GradeCriteria;
 import java.util.Map;
 
 /**
- * The class {@code Answer} represents single answer for questionnaire's question.
+ * The class {@code Answer} represents a single answer for a questionnaire's question.
  *
  * @author Orin Adraas
  */
@@ -28,7 +28,7 @@ public class Answer {
     private String answerWording;
 
     /**
-     * The grades for single answer by means specific criteria.
+     * The grades for a single answer by means specific criteria.
      */
     private Map<GradeCriteria, Grade> grades;
 }

@@ -9,7 +9,7 @@ import ru.wkn.entities.result.GradeCriteria;
 import java.util.Set;
 
 /**
- * The class {@code Questionnaire} represents questionnaire with preset questions.
+ * The class {@code Questionnaire} represents a questionnaire with a preset questions.
  *
  * @author Orin Adraas
  */
@@ -20,22 +20,22 @@ import java.util.Set;
 public class Questionnaire {
 
     /**
-     * The unique ID of questionnaire.
+     * The unique ID of a questionnaire.
      */
     private long id;
 
     /**
-     * The ID of questionnaire author.
+     * The ID of a questionnaire author.
      */
     private long authorId;
 
     /**
-     * The title of questionnaire.
+     * The title of a questionnaire.
      */
     private String title;
 
     /**
-     * The preset questions of questionnaire.
+     * The preset questions of a questionnaire.
      */
     private Set<Question> questions;
 
