@@ -9,6 +9,7 @@ import ru.wkn.exceptions.EntityException;
 /**
  * The class {@code Interval} represents a single interval for a user grading by his grades.
  *
+ * @param <T> extends the class {@code Number} and represents the type of the boundaries of this interval.
  * @author Orin Adraas
  */
 @NoArgsConstructor
@@ -17,9 +18,24 @@ import ru.wkn.exceptions.EntityException;
 @EqualsAndHashCode
 public class Interval<T extends Number> {
 
+    /**
+     * The min value of an interval.
+     */
     private T minValue;
+
+    /**
+     * The max value of an interval.
+     */
     private T maxValue;
 
+    /**
+     * Initializes a newly created {@code Interval} object with the given parameter assignments to the fields of
+     * an {@code Interval} object.
+     *
+     * @param minValue {@link #minValue}
+     * @param maxValue {@link #maxValue}
+     * @throws EntityException thrown if some problems was occurred with the parameter values.
+     */
     public Interval(T minValue, T maxValue) throws EntityException {
         if (minValue.doubleValue() > maxValue.doubleValue()) {
             throw new EntityException("A min value more than a max value of an interval");
