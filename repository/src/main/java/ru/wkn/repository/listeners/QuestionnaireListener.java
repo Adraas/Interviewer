@@ -19,7 +19,7 @@ public class QuestionnaireListener {
         questionnaire.getQuestions().forEach(question ->
                 question.getAnswers().forEach((answer ->
                         answer.getGrades().keySet().forEach(gradeCriteria -> {
-                            if (!questionnaire.getGradeCriteria().contains(gradeCriteria)) {
+                            if (!questionnaire.getAnalyticalInformation().keySet().contains(gradeCriteria)) {
                                 answer.getGrades().remove(gradeCriteria);
                             }
                         }))));

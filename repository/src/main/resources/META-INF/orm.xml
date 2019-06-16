@@ -52,9 +52,9 @@
             </basic>
             <element-collection name="questions" access="FIELD" target-class="ru.wkn.entities.questionnaire.Question"
                                 fetch="EAGER"/>
-            <element-collection name="gradeCriteria" access="FIELD"
-                                target-class="ru.wkn.entities.result.GradeCriteria" fetch="EAGER">
-                <enumerated>STRING</enumerated>
+            <element-collection name="analyticalInformation" access="FIELD"
+                                target-class="ru.wkn.entities.questionnaire.AnalyticalInformation" fetch="EAGER">
+                <map-key-column name="grade_criteria" unique="true" nullable="false" length="20"/>
             </element-collection>
         </attributes>
     </entity>
@@ -76,8 +76,8 @@
             <basic name="theme" access="FIELD">
                 <column name="theme" nullable="false" length="30"/>
             </basic>
-            <one-to-many name="questionnaires" target-entity="ru.wkn.entities.questionnaire.Questionnaire"
-                         fetch="EAGER" access="FIELD">
+            <one-to-many name="questionnaires" access="FIELD"
+                         target-entity="ru.wkn.entities.questionnaire.Questionnaire" fetch="EAGER">
                 <cascade>
                     <cascade-persist/>
                     <cascade-refresh/>
@@ -102,13 +102,32 @@
             <basic name="information" access="FIELD">
                 <column name="information" nullable="false" length="1000"/>
             </basic>
-            <element-collection name="grades" target-class="ru.wkn.entities.result.Grade" fetch="EAGER">
+            <element-collection name="grades" access="FIELD" target-class="ru.wkn.entities.result.Grade" fetch="EAGER">
                 <map-key-enumerated>STRING</map-key-enumerated>
                 <map-key-column name="grade_criteria" unique="true" nullable="false" length="20"/>
                 <column name="grade" length="20"/>
             </element-collection>
         </attributes>
     </entity>
+
+    <embeddable class="ru.wkn.entities.questionnaire.Interval">
+        <attributes>
+            <basic name="minValue" access="FIELD">
+                <column name="min_value" nullable="false"/>
+            </basic>
+            <basic name="maxValue" access="FIELD">
+                <column name="max_value" nullable="false"/>
+            </basic>
+        </attributes>
+    </embeddable>
+    <embeddable class="ru.wkn.entities.questionnaire.AnalyticalInformation">
+        <attributes>
+            <basic name="information" access="FIELD">
+                <column name="information" nullable="false" length="1000"/>
+            </basic>
+            <embedded name="interval" access="FIELD"/>
+        </attributes>
+    </embeddable>
 
     <embeddable class="ru.wkn.entities.questionnaire.Answer">
         <attributes>
