@@ -44,6 +44,7 @@ public class QuestionnaireGroup {
      * @param theme          {@link #theme}
      * @param questionnaires {@link #questionnaires}
      */
+    @SuppressWarnings(value = {"unused"})
     public QuestionnaireGroup(long authorId, String theme, Set<Questionnaire> questionnaires) {
         this.authorId = authorId;
         this.theme = theme;

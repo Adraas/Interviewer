@@ -36,6 +36,7 @@ public class Interval<T extends Number> {
      * @param maxValue {@link #maxValue}
      * @throws EntityException thrown if some problems was occurred with the parameter values.
      */
+    @SuppressWarnings(value = {"unused"})
     public Interval(T minValue, T maxValue) throws EntityException {
         if (minValue.doubleValue() > maxValue.doubleValue()) {
             throw new EntityException("A min value more than a max value of an interval");

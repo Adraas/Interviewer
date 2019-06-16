@@ -50,6 +50,7 @@ public class Report {
      * @param information {@link #information}
      * @param grades      {@link #grades}
      */
+    @SuppressWarnings(value = {"unused"})
     public Report(String authorId, String title, String information, Map<GradeCriteria, Grade> grades) {
         this.authorId = authorId;
         this.title = title;
