@@ -38,7 +38,8 @@ public class RepositoryFacade {
     private IService service;
 
     /**
-     * Initializes a newly created {@code RepositoryFacade} object.
+     * Initializes a newly created {@code RepositoryFacade} object with the given parameter assignments to the fields of
+     * an {@code RepositoryFacade} object.
      *
      * @param persistenceUnitName {@link #persistenceUnitName}
      * @param entityInstanceType  {@link #entityInstanceType}
