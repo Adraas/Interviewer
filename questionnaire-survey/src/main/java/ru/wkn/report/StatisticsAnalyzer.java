@@ -12,8 +12,21 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * The class {@code StatisticsAnalyzer} represents a statistics analyzer for input questionnaire survey results.
+ * This class reads all answers of a questionnaire and collects statistics.
+ *
+ * @author Orin Adraas
+ */
 public class StatisticsAnalyzer {
 
+    /**
+     * The  method for the statistics collecting by means input input questionnaire survey results.
+     *
+     * @param indicatedAnswers the user's indicated answers of the questionnaire
+     * @param questionnaire the source questionnaire on the bases of which the {@code Statistics} object is created
+     * @return a newly created {@code Statistics} object with the input questionnaire survey results statistics
+     */
     public Statistics getStatisticsByResults(Set<Answer> indicatedAnswers, Questionnaire questionnaire) {
         Iterator<Answer> answerIterator = indicatedAnswers.iterator();
         Collection<String> gradeCriteria = questionnaire.getAnalyticalInformation().keySet();

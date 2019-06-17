@@ -17,6 +17,10 @@ public class QuestionnaireSurveyFacade {
     private AnalyticalInformationGenerator analyticalInformationGenerator;
     private ReportCreator reportCreator;
 
+    /**
+     * Initializes a newly created {@code QuestionnaireSurveyFacade} object with the fields of a
+     * {@code QuestionnaireSurveyFacade} object initializing.
+     */
     public QuestionnaireSurveyFacade() {
         statisticsAnalyzer = new StatisticsAnalyzer();
         reportCreator = new ReportCreator();
