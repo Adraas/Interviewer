@@ -6,8 +6,7 @@ import ru.wkn.report.entities.Statistics;
 
 public class ReportCreator {
 
-    public Report getReportByStatistics(Statistics statistics, Questionnaire questionnaire, long authorId,
-                                        int maxLineLength) {
+    public Report getReportByStatistics(Statistics statistics, Questionnaire questionnaire, long authorId) {
         String information = "";
         for (String currentGradeCriteria : statistics.getAnalyticalInformationByCriteria().keySet()) {
             String currentAnalyticalInformation =
@@ -15,19 +14,14 @@ public class ReportCreator {
             information = information
                     .concat(currentGradeCriteria)
                     .concat("\n")
-                    .concat(mergeStrings(separateString(currentAnalyticalInformation, maxLineLength)))
+                    .concat(currentAnalyticalInformation)
                     .concat("\n\n");
         }
         return new Report(authorId, questionnaire.getTitle(), information, statistics.getGradesByCriteria());
     }
 
     // TODO: implement this method
-    private String[] separateString(String currentAnalyticalInformation, int maxLineLength) {
-        return new String[]{};
-    }
-
-    // TODO: implement this method
-    private String mergeStrings(String[] separatedStrings) {
+    private String scaleToWidth(String currentAnalyticalInformation, int maxLineLength) {
         return "";
     }
 }
