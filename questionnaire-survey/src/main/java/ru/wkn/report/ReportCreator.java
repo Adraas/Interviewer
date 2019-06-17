@@ -40,8 +40,29 @@ public class ReportCreator {
      * @param maxLineLength the max length of each line
      * @return a scaled to width analytical information
      */
-    // TODO: implement this method
-    private String scaleToWidth(String analyticalInformation, int maxLineLength) {
+    public String scaleToWidth(String analyticalInformation, int maxLineLength) {
+        analyticalInformation = analyticalInformation.replaceAll("\\s{2,}", " ");
+        String[] analyticalInformationLines = analyticalInformation.split("\n");
+        for (int i = 0; i < analyticalInformationLines.length; i++) {
+            String currentLine = analyticalInformationLines[i];
+            if (currentLine.length() > maxLineLength) {
+                analyticalInformationLines[i] = scaleLineToWidth(currentLine, maxLineLength);
+            }
+        }
         return "";
+    }
+
+    private String scaleLineToWidth(String currentLine, int maxLineLength) {
+        String[] words = currentLine.split("\\s");
+        currentLine = "";
+        for (String word : words) {
+            String temp = currentLine.concat(word);
+            if (temp.length() <= maxLineLength) {
+                currentLine = temp;
+            } else {
+                currentLine = currentLine.concat("\n").concat(word);
+            }
+        }
+        return currentLine;
     }
 }
