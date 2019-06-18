@@ -11,7 +11,6 @@
         <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
 
         <properties>
-            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/questionnaire_survey"/>
             <property name="javax.persistence.jdbc.user" value="user"/>
             <property name="javax.persistence.jdbc.password" value="user"/>
