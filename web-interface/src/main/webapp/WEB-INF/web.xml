@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+         http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+        </jsp-property-group>
+    </jsp-config>
+
+    <welcome-file-list>
+        <welcome-file>sign_in.jsp</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>sign_in</servlet-name>
+        <servlet-class>ru.wkn.servlets.SignInServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>sign_in</servlet-name>
+        <url-pattern>/interviewer/sign_in</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>sign_up</servlet-name>
+        <servlet-class>ru.wkn.servlets.SignUpServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>sign_up</servlet-name>
+        <url-pattern>/interviewer/sign_up</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>catalog</servlet-name>
+        <servlet-class>ru.wkn.servlets.CatalogServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>catalog</servlet-name>
+        <url-pattern>/interviewer/catalog</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>my_questionnaires</servlet-name>
+        <servlet-class>ru.wkn.servlets.MyQuestionnairesServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>my_questionnaires</servlet-name>
+        <url-pattern>/interviewer/my_questionnaires</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>my_groups</servlet-name>
+        <servlet-class>ru.wkn.servlets.MyGroupsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>my_groups</servlet-name>
+        <url-pattern>/interviewer/my_groups</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>my_reports</servlet-name>
+        <servlet-class>ru.wkn.servlets.MyReportsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>my_reports</servlet-name>
+        <url-pattern>/interviewer/my_reports</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>current_questionnaire</servlet-name>
+        <servlet-class>ru.wkn.servlets.CurrentQuestionnaireServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>current_questionnaire</servlet-name>
+        <url-pattern>/interviewer/current_questionnaire</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>current_report</servlet-name>
+        <servlet-class>ru.wkn.servlets.CurrentReportServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>current_report</servlet-name>
+        <url-pattern>/interviewer/current_report</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>questionnaire_editing</servlet-name>
+        <servlet-class>ru.wkn.servlets.QuestionnaireEditingServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>questionnaire_editing</servlet-name>
+        <url-pattern>/interviewer/questionnaire_editing</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>report_editing</servlet-name>
+        <servlet-class>ru.wkn.servlets.ReportEditingServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>report_editing</servlet-name>
+        <url-pattern>/interviewer/report_editing</url-pattern>
+    </servlet-mapping>
+</web-app>
