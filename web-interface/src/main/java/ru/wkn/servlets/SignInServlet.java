@@ -17,7 +17,7 @@ import java.util.Enumeration;
 public class SignInServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Enumeration<String> authorizationHeaderData = req.getHeaders("Authorization");
         String login = null;
         String password = null;
