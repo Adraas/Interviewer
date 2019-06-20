@@ -1,7 +1,6 @@
 package ru.wkn.repository.service;
 
 import ru.wkn.entities.user.User;
-import ru.wkn.exceptions.PersistenceException;
 import ru.wkn.repository.dao.IDao;
 import ru.wkn.repository.dao.h2.H2UserDao;
 
@@ -33,9 +32,8 @@ public class UserService extends Service<User, Long> {
      * @param email    the given email for the searching
      * @param password the given password for the searching
      * @return the searched object, casted to the {@code User} type
-     * @throws ru.wkn.exceptions.PersistenceException thrown if some problems with cortege searching
      */
-    public User getUserByEmailAndPassword(String email, String password) throws PersistenceException {
+    public User getUserByEmailAndPassword(String email, String password) {
         return ((H2UserDao) getDao()).getUserByEmailAndPassword(email, password);
     }
 

@@ -35,10 +35,9 @@ public class H2UserDao extends H2Dao<User, Long> {
      *
      * @param email    the given email for the searching
      * @param password the given password for the searching
-     * @return the searched object, casted to the {@code User} type
-     * @throws ru.wkn.exceptions.PersistenceException thrown if some problems with cortege searching
+     * @return the searched object, casted to the {@code User} type or {@code null} if it is not exist
      */
-    public User getUserByEmailAndPassword(String email, String password) throws ru.wkn.exceptions.PersistenceException {
+    public User getUserByEmailAndPassword(String email, String password) {
         Query query = getSession().createQuery("SELECT * FROM ".concat(getEntityInstanceType().getEntityName())
                 .concat(" WHERE email = :email AND password = :password"));
         query.setParameter("email", email);
@@ -48,7 +47,7 @@ public class H2UserDao extends H2Dao<User, Long> {
         } catch (PersistenceException e) {
             String message = e.getMessage();
             log.warning(message);
-            throw new ru.wkn.exceptions.PersistenceException(message, e.getCause());
+            return null;
         }
     }
 
