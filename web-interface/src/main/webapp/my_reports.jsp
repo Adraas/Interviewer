@@ -9,7 +9,7 @@
     <script rel="script" type="text/javascript" src="js/Interviewer.js"></script>
     <script rel="script" type="text/javascript" src="js/Cookies.js"></script>
 </head>
-<body onload="Interviewer.updateTableValues('/interviewer/catalog', 'catalog_table', Cookies.getCookie(this, 'user'))">
+<body onload="Interviewer.updateTableValues('/catalog', 'catalog_table', Cookies.getCookie(this, 'user'))">
 <input type="checkbox" id="nav-toggle" hidden>
 <nav class="nav">
     <label for="nav-toggle" class="nav-toggle" onclick></label>
@@ -17,16 +17,16 @@
         <a href="">Interviewer</a>
     </h2>
     <ul>
-        <li><a href onclick="Interviewer.navigateTo('/interviewer/catalog', Cookies.getCookie(this, 'user'))">
+        <li><a href onclick="Interviewer.navigateTo('/catalog', Cookies.getCookie(this, 'user'))">
             Каталог анкет
         </a>
-        <li><a href onclick="Interviewer.navigateTo('/interviewer/questionnaires', Cookies.getCookie(this, 'user'))">
+        <li><a href onclick="Interviewer.navigateTo('/questionnaires', Cookies.getCookie(this, 'user'))">
             Мои анкеты
         </a>
-        <li><a href onclick="Interviewer.navigateTo('/interviewer/groups', Cookies.getCookie(this, 'user'))">
+        <li><a href onclick="Interviewer.navigateTo('/groups', Cookies.getCookie(this, 'user'))">
             Мои группы
         </a>
-        <li><a href onclick="Interviewer.navigateTo('/interviewer/reports', Cookies.getCookie(this, 'user'))">
+        <li><a href onclick="Interviewer.navigateTo('/reports', Cookies.getCookie(this, 'user'))">
             Мои отчеты
         </a>
     </ul>

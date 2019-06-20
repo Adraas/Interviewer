@@ -12,34 +12,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Base64;
-import java.util.Enumeration;
 
 public class SignInServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Enumeration<String> authorizationHeaderData = req.getHeaders("Authorization");
-        String login = null;
-        String password = null;
-        if (authorizationHeaderData.hasMoreElements()) {
-            login = new String(Base64.getDecoder().decode(authorizationHeaderData.nextElement()));
-        }
-        if (authorizationHeaderData.hasMoreElements()) {
-            password = new String(Base64.getDecoder().decode(authorizationHeaderData.nextElement()));
-        }
-
-        resp.setContentType("text/plain");
-        if (!authorizationHeaderData.hasMoreElements() && login != null && password != null) {
+        String authorizationEncodingData = req.getHeader("Authorization");
+        authorizationEncodingData = authorizationEncodingData.split("Basic ")[1];
+        authorizationEncodingData = new String(Base64.getDecoder().decode(authorizationEncodingData));
+        String[] authorizationData = authorizationEncodingData.split(", ");
+        if (authorizationData.length == 2) {
+            String login = authorizationData[0];
+            String password = authorizationData[1];
+            resp.setContentType("text/plain");
             User user;
             user = getUser(login, password);
             if (user != null) {
                 resp.addCookie(new Cookie("user", user.getCookie()));
-                req.getRequestDispatcher("/interviewer/catalog.jsp").forward(req, resp);
+                req.getRequestDispatcher("/catalog.jsp").forward(req, resp);
             } else {
                 resp.sendError(400, "Wrong email or password");
             }
         } else {
-            resp.sendError(400, "Wrong email or password");
+            resp.sendError(400, "Wrong input data");
         }
     }
 

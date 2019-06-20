@@ -23,7 +23,7 @@
 
     <servlet-mapping>
         <servlet-name>sign_in</servlet-name>
-        <url-pattern>/interviewer/sign_in</url-pattern>
+        <url-pattern>/sign_in</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -33,7 +33,7 @@
 
     <servlet-mapping>
         <servlet-name>sign_up</servlet-name>
-        <url-pattern>/interviewer/sign_up</url-pattern>
+        <url-pattern>/sign_up</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -43,7 +43,7 @@
 
     <servlet-mapping>
         <servlet-name>catalog</servlet-name>
-        <url-pattern>/interviewer/catalog</url-pattern>
+        <url-pattern>/catalog</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -53,7 +53,7 @@
 
     <servlet-mapping>
         <servlet-name>my_questionnaires</servlet-name>
-        <url-pattern>/interviewer/my_questionnaires</url-pattern>
+        <url-pattern>/my_questionnaires</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -63,7 +63,7 @@
 
     <servlet-mapping>
         <servlet-name>my_groups</servlet-name>
-        <url-pattern>/interviewer/my_groups</url-pattern>
+        <url-pattern>/my_groups</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -73,7 +73,7 @@
 
     <servlet-mapping>
         <servlet-name>my_reports</servlet-name>
-        <url-pattern>/interviewer/my_reports</url-pattern>
+        <url-pattern>/my_reports</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -83,7 +83,7 @@
 
     <servlet-mapping>
         <servlet-name>current_questionnaire</servlet-name>
-        <url-pattern>/interviewer/current_questionnaire</url-pattern>
+        <url-pattern>/current_questionnaire</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -93,7 +93,7 @@
 
     <servlet-mapping>
         <servlet-name>current_report</servlet-name>
-        <url-pattern>/interviewer/current_report</url-pattern>
+        <url-pattern>/current_report</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -103,7 +103,7 @@
 
     <servlet-mapping>
         <servlet-name>questionnaire_editing</servlet-name>
-        <url-pattern>/interviewer/questionnaire_editing</url-pattern>
+        <url-pattern>/questionnaire_editing</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -113,6 +113,6 @@
 
     <servlet-mapping>
         <servlet-name>report_editing</servlet-name>
-        <url-pattern>/interviewer/report_editing</url-pattern>
+        <url-pattern>/report_editing</url-pattern>
     </servlet-mapping>
 </web-app>

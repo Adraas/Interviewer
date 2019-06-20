@@ -5,6 +5,7 @@ class Entrance {
             let login = document.getElementById(loginElement);
             let password = document.getElementById(passwordElement);
             let data = "Basic " + btoa(login.value + ", " + password.value);
+            alert(data);
             this.doRequest(data, "Authorization", "/interviewer/sign_in", "GET");
         } else {
             alert("Проверьте данные!")
