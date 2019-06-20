@@ -4,17 +4,19 @@ class Interviewer {
 
     static updateTableValues(URL, tableId, cookie) {
         let xmlHttp = new XMLHttpRequest();
-        xmlHttp.open("GET", URL, true);
-        xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-        xmlHttp.setRequestHeader("Model-version", this.lastUpdatingDate);
+        xmlHttp.open("POST", URL, true);
+        xmlHttp.setRequestHeader("Content-Type", "text/plain; charset=UTF-8");
         xmlHttp.setRequestHeader("Cookie", cookie);
-        xmlHttp.send();
+        let dateVariableFormat = "last-updating-date=";
+        xmlHttp.send(dateVariableFormat + Interviewer.lastUpdatingDate.toString());
+
         xmlHttp.onload = function () {
-            let lastUpdatingDate = xmlHttp.getResponseHeader("Last-updating-date");
-            if (lastUpdatingDate !== Interviewer.lastUpdatingDate) {
-                Interviewer.lastUpdatingDate = lastUpdatingDate;
+            let response = xmlHttp.responseText;
+            if (response.trim() !== "") {
+                let responseData = response.split(dateVariableFormat)[1].split("&");
+                Interviewer.lastUpdatingDate = Date.parse(responseData[0]);
                 Interviewer.deleteOldTableValues(tableId);
-                let tableValues = xmlHttp.getResponseHeader("Table-values");
+                let tableValues = responseData[1];
                 document.getElementById(tableId).append(tableValues);
             }
         }
@@ -34,8 +36,8 @@ class Interviewer {
 
     static navigateTo(URL, cookie) {
         let xmlHttp = new XMLHttpRequest();
-        xmlHttp.open("GET", URL, true);
-        xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+        xmlHttp.open("POST", URL, true);
+        xmlHttp.setRequestHeader("Content-Type", "text/plain; charset=UTF-8");
         xmlHttp.setRequestHeader("Cookie", cookie);
         xmlHttp.send();
     }

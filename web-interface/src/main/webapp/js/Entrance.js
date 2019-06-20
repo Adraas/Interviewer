@@ -4,7 +4,7 @@ class Entrance {
         if (this.isCorrect([loginElement, passwordElement])) {
             let login = document.getElementById(loginElement);
             let password = document.getElementById(passwordElement);
-            let data = btoa(login + ", " + password);
+            let data = "Basic " + btoa(login + ", " + password);
             this.doRequest(data, "Authorization", "/interviewer/sign_in", "GET");
         } else {
             alert("Проверьте данные!")
@@ -17,7 +17,7 @@ class Entrance {
             let login = document.getElementById(loginElement);
             let password = document.getElementById(passwordElement);
             let data = "nickname=" + nickname + "&login=" + login + "&password=" + password;
-            this.doRequest(data, "Registration", "/interviewer/sign_up", "POST");
+            this.doRequest(data, null, "/interviewer/sign_up", "POST");
         } else {
             alert("Проверьте данные!")
         }
@@ -26,13 +26,17 @@ class Entrance {
     static doRequest(data, header, URL, requestType) {
         let xmlHttp = new XMLHttpRequest();
         xmlHttp.open(requestType, URL, true);
-        xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-        xmlHttp.setRequestHeader(header, data);
-        xmlHttp.send();
+        xmlHttp.setRequestHeader('Content-Type', 'text/plain; charset=UTF-8');
+        if (header == null) {
+            xmlHttp.send(data);
+        } else {
+            xmlHttp.setRequestHeader(header, data);
+            xmlHttp.send();
+        }
 
         xmlHttp.onload = function () {
-            let result = xmlHttp.getResponseHeader("Result");
-            if (result != null || result !== "") {
+            let result = xmlHttp.responseText;
+            if (result != null && result !== "") {
                 alert(result);
             }
         };
