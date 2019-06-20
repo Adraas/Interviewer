@@ -5,8 +5,7 @@ class Entrance {
             let login = document.getElementById(loginElement);
             let password = document.getElementById(passwordElement);
             let data = "Basic " + btoa(login.value + ", " + password.value);
-            alert(data);
-            this.doRequest(data, "Authorization", "/interviewer/sign_in", "GET");
+            Entrance.doRequest(data, "Authorization", "/interviewer/sign_in", "GET");
         } else {
             alert("Проверьте данные!")
         }
@@ -18,7 +17,7 @@ class Entrance {
             let login = document.getElementById(loginElement);
             let password = document.getElementById(passwordElement);
             let data = "nickname=" + nickname.value + "&login=" + login.value + "&password=" + password.value;
-            this.doRequest(data, null, "/interviewer/sign_up", "POST");
+            Entrance.doRequest(data, null, "/interviewer/sign_up", "POST");
         } else {
             alert("Проверьте данные!")
         }
