@@ -4,12 +4,6 @@ class Interviewer {
 
     static updateTableValues(URL, tableId, cookie) {
         let xmlHttp = new XMLHttpRequest();
-        xmlHttp.open("POST", URL, true);
-        xmlHttp.setRequestHeader("Content-Type", "text/plain; charset=UTF-8");
-        xmlHttp.setRequestHeader("Cookie", cookie);
-        let dateVariableFormat = "last-updating-date=";
-        xmlHttp.send(dateVariableFormat + Interviewer.lastUpdatingDate.toString());
-
         xmlHttp.onload = function () {
             let response = xmlHttp.responseText;
             if (response.trim() !== "") {
@@ -19,7 +13,12 @@ class Interviewer {
                 let tableValues = responseData[1];
                 document.getElementById(tableId).append(tableValues);
             }
-        }
+        };
+        xmlHttp.open("POST", URL, true);
+        xmlHttp.setRequestHeader("Content-Type", "text/plain; charset=UTF-8");
+        xmlHttp.setRequestHeader("Cookie", cookie);
+        let dateVariableFormat = "last-updating-date=";
+        xmlHttp.send(dateVariableFormat + Interviewer.lastUpdatingDate.toString());
     }
 
     static deleteOldTableValues(tableId) {
