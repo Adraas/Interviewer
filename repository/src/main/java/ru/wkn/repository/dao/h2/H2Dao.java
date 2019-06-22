@@ -7,8 +7,8 @@ import lombok.extern.java.Log;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ru.wkn.exceptions.PersistenceException;
-import ru.wkn.repository.util.EntityInstanceType;
 import ru.wkn.repository.dao.IDao;
+import ru.wkn.repository.util.EntityInstanceType;
 
 import javax.persistence.Query;
 import javax.persistence.RollbackException;
@@ -109,7 +109,7 @@ public class H2Dao<V, I extends Serializable> implements IDao<V, I> {
     @SuppressWarnings(value = {"unchecked"})
     @Override
     public Collection<V> getAll() {
-        Query query = session.createSQLQuery("SELECT * FROM ".concat(entityInstanceType.getEntityName()));
+        Query query = session.createNativeQuery("SELECT * FROM ".concat(entityInstanceType.getEntityName()));
         return query.getResultList();
     }
 }

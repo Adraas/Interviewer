@@ -1,7 +1,6 @@
 package ru.wkn.repository.dao.h2;
 
 import org.hibernate.Session;
-import ru.wkn.entities.questionnaire.Questionnaire;
 import ru.wkn.entities.result.Report;
 import ru.wkn.repository.util.EntityInstanceType;
 
@@ -37,8 +36,8 @@ public class H2ReportDao extends H2Dao<Report, Long> {
      */
     @SuppressWarnings(value = {"unchecked"})
     public Collection<Report> getReportsByAuthorId(Long index) {
-        Query query = getSession().createQuery("SELECT * FROM ".concat(getEntityInstanceType().getEntityName())
-                .concat(" WHERE author_id = :index"));
+        Query query = getSession().createNativeQuery("SELECT * FROM ".concat(getEntityInstanceType().getEntityName())
+                .concat(" WHERE author_id LIKE(:index)"));
         query.setParameter("index", index);
         return query.getResultList();
     }

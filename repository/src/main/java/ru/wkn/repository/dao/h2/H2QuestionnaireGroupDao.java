@@ -37,8 +37,8 @@ public class H2QuestionnaireGroupDao extends H2Dao<QuestionnaireGroup, Long> {
      */
     @SuppressWarnings(value = {"unchecked"})
     public Collection<QuestionnaireGroup> getQuestionnaireGroupsByAuthorId(Long index) {
-        Query query = getSession().createQuery("SELECT * FROM ".concat(getEntityInstanceType().getEntityName())
-                .concat(" WHERE author_id = :index"));
+        Query query = getSession().createNativeQuery("SELECT * FROM ".concat(getEntityInstanceType().getEntityName())
+                .concat(" WHERE author_id LIKE(:index)"));
         query.setParameter("index", index);
         return query.getResultList();
     }

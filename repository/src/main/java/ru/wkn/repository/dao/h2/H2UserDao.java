@@ -38,8 +38,8 @@ public class H2UserDao extends H2Dao<User, Long> {
      * @return the searched object, casted to the {@code User} type or {@code null} if it is not exist
      */
     public User getUserByEmailAndPassword(String email, String password) {
-        Query query = getSession().createQuery("SELECT * FROM ".concat(getEntityInstanceType().getEntityName())
-                .concat(" WHERE email = :email AND password = :password"));
+        Query query = getSession().createNativeQuery("SELECT * FROM ".concat(getEntityInstanceType().getEntityName())
+                .concat(" WHERE email LIKE(:email) AND password LIKE(:password)"));
         query.setParameter("email", email);
         query.setParameter("password", password);
         try {
@@ -58,8 +58,8 @@ public class H2UserDao extends H2Dao<User, Long> {
      * @return {@code true} if the given cookie value is exists in a repository, else - {@code false}
      */
     public boolean isCookieExists(String cookie) {
-        Query query = getSession().createQuery("SELECT cookie FROM ".concat(getEntityInstanceType().getEntityName()
-                .concat(" WHERE cookie = :cookie")));
+        Query query = getSession().createNativeQuery("SELECT cookie FROM ".concat(getEntityInstanceType().getEntityName()
+                .concat(" WHERE cookie LIKE(:cookie)")));
         query.setParameter("cookie", cookie);
         return query.getResultList().size() != 0;
     }
