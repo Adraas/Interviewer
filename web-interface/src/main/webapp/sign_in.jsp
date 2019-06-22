@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/general.css" type="text/css">
     <link rel="stylesheet" href="css/entrance.css" type="text/css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.1/progressbar.min.js"></script>
     <script rel="script" type="text/javascript" src="js/Entrance.js"></script>
     <script rel="script" type="text/javascript" src="js/Cookies.js"></script>
     <title>Авторизация</title>
