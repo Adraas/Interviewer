@@ -25,7 +25,30 @@ class Entrance {
 
     static doRequest(data, header, URL, requestType) {
         let xmlHttp = new XMLHttpRequest();
-        xmlHttp.open(requestType, URL, true);
+        let xmlHttpUpload = xmlHttp.upload;
+        xmlHttpUpload.onprogress = function (event) {
+            let bar = new ProgressBar.Circle('#circle-container', {
+                strokeWidth: 6,
+                easing: 'easeInOut',
+                duration: event.total,
+                color: '#FFEA82',
+                trailColor: '#eee',
+                trailWidth: 1,
+                svgStyle: null
+            });
+            bar.animate(event.loaded);
+        };
+        xmlHttp.onload = function () {
+            let response = xmlHttp.responseText;
+            if (response.trim() !== "") {
+                if (!response.startsWith("<!")) {
+                    alert(response);
+                } else {
+                    window.document.writeln(response);
+                }
+            }
+        };
+        xmlHttp.open(requestType, URL, false);
         xmlHttp.setRequestHeader("Content-Type", "text/plain; charset=UTF-8");
         if (header == null) {
             xmlHttp.send(data);
@@ -33,13 +56,6 @@ class Entrance {
             xmlHttp.setRequestHeader(header, data);
             xmlHttp.send();
         }
-
-        xmlHttp.onload = function () {
-            let result = xmlHttp.responseText;
-            if (result != null && result !== "") {
-                alert(result);
-            }
-        };
     }
 
     static isCorrect(elements) {
