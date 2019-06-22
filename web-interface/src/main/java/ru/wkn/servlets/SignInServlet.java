@@ -29,9 +29,9 @@ public class SignInServlet extends HttpServlet {
             user = getUser(login, password);
             if (user != null) {
                 resp.addCookie(new Cookie("user", user.getCookie()));
-                req.getRequestDispatcher("/catalog.jsp").forward(req, resp);
+                req.getRequestDispatcher("catalog").forward(req, resp);
             } else {
-                resp.sendError(400, "Wrong email or password");
+                resp.getWriter().println("Wrong email or password");
             }
         } else {
             resp.sendError(400, "Wrong input data");
