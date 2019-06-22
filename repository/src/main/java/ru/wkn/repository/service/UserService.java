@@ -4,8 +4,8 @@ import ru.wkn.entities.user.User;
 import ru.wkn.repository.dao.IDao;
 import ru.wkn.repository.dao.h2.H2UserDao;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 /**
  * The class {@code UserService} represents a special case for the {@code Service} using for a special needs for
@@ -39,7 +39,7 @@ public class UserService extends Service<User, Long> {
 
     /**
      * The method for the generating a new unique (for the table-level constraint) cookie value by means the
-     * MD5 algorithm with input parameters as the {@code name}, {@code email} and {@code password}.
+     * base64 algorithm with input parameters as the {@code name}, {@code email} and {@code password}.
      *
      * @param name     the given name for the generating cookie
      * @param email    the given email for the generating cookie
@@ -47,17 +47,12 @@ public class UserService extends Service<User, Long> {
      * @return the generated unique cookie value as {@code String} object
      */
     public String generateCookie(String name, String email, String password) {
-        byte[] startMessage = name.concat(email).concat(password).getBytes();
-        String codeMessage = null;
-        try {
-            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-            codeMessage = new String(messageDigest.digest(startMessage));
-            while (((H2UserDao) getDao()).isCookieExists(codeMessage)) {
-                codeMessage = new String(messageDigest.digest(new String(startMessage).concat(codeMessage).getBytes()));
-            }
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+        byte[] startMessage = name.concat(email).concat(password).getBytes(StandardCharsets.UTF_8);
+        Base64.Encoder encoder = Base64.getEncoder();
+        String codedMessage = new String(encoder.encode(startMessage));
+        while (((H2UserDao) super.getDao()).isCookieExists(codedMessage)) {
+            codedMessage = new String(encoder.encode(codedMessage.getBytes(StandardCharsets.UTF_8)));
         }
-        return codeMessage;
+        return codedMessage;
     }
 }
