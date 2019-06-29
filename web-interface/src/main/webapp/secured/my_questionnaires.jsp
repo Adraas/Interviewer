@@ -4,10 +4,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Interviewer</title>
-    <link rel="stylesheet" href="css/general.css">
-    <link rel="stylesheet" href="css/left-navigation-panel.css">
-    <script rel="script" type="text/javascript" src="js/Interviewer.js"></script>
-    <script rel="script" type="text/javascript" src="js/Cookies.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/general.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/left-navigation-panel.css">
+    <script rel="script" type="text/javascript" src="${pageContext.request.contextPath}/js/Interviewer.js"></script>
+    <script rel="script" type="text/javascript" src="${pageContext.request.contextPath}/js/Cookies.js"></script>
 </head>
 <body onload="Interviewer.updateTableValues('/catalog', 'catalog_table', Cookies.getCookie(this, 'user'))">
 <input type="checkbox" id="nav-toggle" hidden>
