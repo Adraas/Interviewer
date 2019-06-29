@@ -55,4 +55,14 @@ public class UserService extends Service<User, Long> {
         }
         return codedMessage;
     }
+
+    /**
+     * The method for the checking to existence for the given cookie value in a DAO implementation.
+     *
+     * @param cookie the given cookie value as the {@code String} object for the checking
+     * @return {@code true} if the given cookie value is exists in a DAO implementation, else - {@code false}
+     */
+    public boolean checkCookieToExist(String cookie) {
+        return ((H2UserDao) super.getDao()).isCookieExists(cookie);
+    }
 }

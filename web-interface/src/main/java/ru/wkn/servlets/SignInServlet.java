@@ -18,20 +18,24 @@ public class SignInServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String authorizationEncodingData = req.getHeader("Authorization");
-        authorizationEncodingData = authorizationEncodingData.split("Basic ")[1];
-        authorizationEncodingData = new String(Base64.getDecoder().decode(authorizationEncodingData));
-        String[] authorizationData = authorizationEncodingData.split(", ");
-        if (authorizationData.length == 2) {
-            String login = authorizationData[0];
-            String password = authorizationData[1];
-            resp.setContentType("text/plain");
-            User user;
-            user = getUser(login, password);
-            if (user != null) {
-                resp.addCookie(new Cookie("user", user.getCookie()));
-                req.getRequestDispatcher("catalog").forward(req, resp);
+        if (authorizationEncodingData != null) {
+            authorizationEncodingData = authorizationEncodingData.split("Basic ")[1];
+            authorizationEncodingData = new String(Base64.getDecoder().decode(authorizationEncodingData));
+            String[] authorizationData = authorizationEncodingData.split(", ");
+            if (authorizationData.length == 2) {
+                String login = authorizationData[0];
+                String password = authorizationData[1];
+                resp.setContentType("text/plain");
+                User user;
+                user = getUser(login, password);
+                if (user != null) {
+                    resp.addCookie(new Cookie("user", user.getCookie()));
+                    req.getRequestDispatcher("/secured/catalog.jsp").forward(req, resp);
+                } else {
+                    resp.getWriter().println("Wrong email or password");
+                }
             } else {
-                resp.getWriter().println("Wrong email or password");
+                resp.sendError(400, "Wrong input data");
             }
         } else {
             resp.sendError(400, "Wrong input data");

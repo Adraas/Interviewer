@@ -115,4 +115,15 @@
         <servlet-name>report_editing</servlet-name>
         <url-pattern>/report_editing</url-pattern>
     </servlet-mapping>
+
+    <filter>
+        <filter-name>security-filter</filter-name>
+        <filter-class>ru.wkn.filters.SecurityProfileFilter</filter-class>
+        <async-supported>false</async-supported>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>security-filter</filter-name>
+        <url-pattern>/secured/*</url-pattern>
+    </filter-mapping>
 </web-app>

@@ -6,7 +6,6 @@ import ru.wkn.exceptions.PersistenceException;
 import ru.wkn.repository.service.UserService;
 import ru.wkn.repository.util.EntityInstanceType;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +15,7 @@ import java.io.IOException;
 public class SignUpServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         BufferedReader bufferedReader = req.getReader();
         String bodyRequest = "";
         while (bufferedReader.ready()) {
@@ -39,9 +38,7 @@ public class SignUpServlet extends HttpServlet {
                             && checkStringToValid(password, ' ', ',', ';', ':')) {
                         boolean isCreated;
                         isCreated = saveUser(name, login, password);
-                        if (isCreated) {
-                            req.getRequestDispatcher("/sign_in.jsp").forward(req, resp);
-                        } else {
+                        if (!isCreated) {
                             resp.getWriter().println("User not saved");
                         }
                     } else {
