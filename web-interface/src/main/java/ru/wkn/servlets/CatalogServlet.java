@@ -1,12 +1,27 @@
 package ru.wkn.servlets;
 
-import javax.servlet.http.Cookie;
+import ru.wkn.RepositoryFacade;
+import ru.wkn.entities.questionnaire.Questionnaire;
+import ru.wkn.entities.questionnaire.QuestionnaireGroup;
+import ru.wkn.repository.util.EntityInstanceType;
+import ru.wkn.util.CookieManager;
+import ru.wkn.util.ImmutablePair;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class CatalogServlet extends HttpServlet {
+
+    private static Map<String, Date> lastUpdatingDates = new HashMap<>();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -14,28 +29,64 @@ public class CatalogServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String cookie = getCookie(req);
+        String cookie = CookieManager.getCookie(req);
         checkCookie(cookie, resp);
-        // TODO: create other implementation
+        String lastUpdatingDateAsString = (String) req.getAttribute("last-updating-date");
+        if (lastUpdatingDateAsString != null && !lastUpdatingDateAsString.trim().equals("")) {
+            updateLastUpdatingDate(cookie, Date.valueOf(lastUpdatingDateAsString), resp);
+        } else {
+            updateLastUpdatingDate(cookie, new Date(System.currentTimeMillis()), resp);
+        }
     }
 
-    private String getCookie(HttpServletRequest req) {
-        Cookie[] cookies = req.getCookies();
-        int i = 0;
-        while (!cookies[i].getName().equals("user")) {
-            i++;
-        }
-        Cookie cookie = cookies[i];
-        if (!cookie.getName().equals("user")) {
-            return null;
+    private void updateLastUpdatingDate(String cookie, Date lastUpdatingDate, HttpServletResponse resp)
+            throws IOException {
+        if (lastUpdatingDates.containsKey(cookie)) {
+            if (!lastUpdatingDates.get(cookie).equals(lastUpdatingDate)) {
+                resp.getWriter().print(generateAnswerTable());
+            }
         } else {
-            return cookie.getValue();
+            Date newUpdatingDate = new Date(System.currentTimeMillis());
+            lastUpdatingDates.put(cookie, newUpdatingDate);
+            resp.getWriter().print(generateAnswerTable());
         }
+    }
+
+    @SuppressWarnings(value = {"unchecked"})
+    private String generateAnswerTable() {
+        Set<ImmutablePair<Questionnaire, String>> setQuestionnaires = new HashSet<>();
+        RepositoryFacade repositoryFacade =
+                new RepositoryFacade("questionnaires_h2_entity_manager", EntityInstanceType.QUESTIONNAIRE_GROUP);
+        Collection<QuestionnaireGroup> questionnaireGroups = repositoryFacade.getService().getAll();
+        repositoryFacade.setEntityInstanceType(EntityInstanceType.QUESTIONNAIRE);
+        Collection<Questionnaire> questionnaires = repositoryFacade.getService().getAll();
+        for (QuestionnaireGroup questionnaireGroup : questionnaireGroups) {
+            for (Questionnaire questionnaire : questionnaireGroup.getQuestionnaires()) {
+                setQuestionnaires.add(new ImmutablePair<>(questionnaire, questionnaireGroup.getTheme()));
+            }
+        }
+        Collection<Questionnaire> questionnairesForDeleting = setQuestionnaires
+                .stream()
+                .map(ImmutablePair::getQObject).collect(Collectors.toList());
+        for (ImmutablePair<Questionnaire, String> immutablePair : setQuestionnaires) {
+            questionnairesForDeleting.add(immutablePair.getQObject());
+        }
+        questionnaires.removeAll(questionnairesForDeleting);
+        for (Questionnaire questionnaire : questionnaires) {
+            setQuestionnaires.add(new ImmutablePair<>(questionnaire, null));
+        }
+        return generateAnswerTable(setQuestionnaires);
+    }
+
+    private String generateAnswerTable(Set<ImmutablePair<Questionnaire, String>> questionnaires) {
+        String answerTable = "";
+        // TODO: create other implementation
+        return answerTable;
     }
 
     private void checkCookie(String cookie, HttpServletResponse resp) throws IOException {
         if (cookie == null) {
-            resp.sendRedirect("sign_in");
+            resp.sendRedirect("/sign_in.jsp");
         }
     }
 }
