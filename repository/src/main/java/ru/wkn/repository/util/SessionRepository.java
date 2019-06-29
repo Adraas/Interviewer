@@ -3,6 +3,7 @@ package ru.wkn.repository.util;
 import org.hibernate.Session;
 import ru.wkn.repository.jpa.HibernateJPAContextInitializer;
 
+import javax.persistence.EntityManagerFactory;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,8 +27,11 @@ public class SessionRepository {
      * @see Map#put(Object, Object)
      */
     public static void addSession(String persistenceUnitName) {
-        sessionMap.put(persistenceUnitName,
-                (Session) HibernateJPAContextInitializer.getEntityManagerFactory(persistenceUnitName));
+        EntityManagerFactory entityManagerFactory = HibernateJPAContextInitializer.getEntityManagerFactory();
+        if (entityManagerFactory == null) {
+            entityManagerFactory = HibernateJPAContextInitializer.getEntityManagerFactory(persistenceUnitName);
+        }
+        sessionMap.put(persistenceUnitName, (Session) entityManagerFactory.createEntityManager().getDelegate());
     }
 
     /**

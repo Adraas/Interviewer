@@ -1,5 +1,8 @@
 package ru.wkn.repository.jpa;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -10,6 +13,13 @@ import javax.persistence.Persistence;
  * @author Orin Adraas
  */
 public class HibernateJPAContextInitializer {
+
+    /**
+     * The single {@code EntityManagerFactory} object.
+     */
+    @Getter
+    @Setter
+    private static EntityManagerFactory entityManagerFactory;
 
     /**
      * The method for the getting an {@code EntityManagerFactory} object by the given persistence unit name.
