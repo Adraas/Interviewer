@@ -1,48 +1,39 @@
 class Interviewer {
 
-    static lastUpdatingDate = null;
-
-    static updateTableValues(URL, tableId, cookie) {
+    static updateDataSectionValues(url, cookie) {
+        let dataSectionId = "data_section";
         let xmlHttp = new XMLHttpRequest();
-        let dateVariableFormat = "last-updating-date=";
         xmlHttp.onload = function () {
             let response = xmlHttp.responseText;
             if (response.trim() !== "") {
-                if (response.startsWith(dateVariableFormat)) {
-                    let responseDate = response.split(dateVariableFormat)[1].split("&")[0];
-                    Interviewer.lastUpdatingDate = moment(responseDate, "EEE MMM dd HH:mm:ss zzz yyyy");
-                    Interviewer.deleteOldTableValues(tableId);
-                    let responseTable = response.split("&");
-                    if (responseTable.length === 2) {
-                        let tableValues = responseTable[1].split("response-table=")[1];
-                        document.getElementById(tableId).append(tableValues);
-                    }
+                Interviewer.deleteOldDataSectionValues(dataSectionId);
+                let responseValue = response.split("response-data=");
+                if (responseValue.length === 2) {
+                    let dataValue = responseValue[1].split("")[1];
+                    // TODO: fix casting String to Node
+                    document.getElementById(dataSectionId).appendChild(dataValue);
                 }
             }
         };
-        xmlHttp.open("POST", URL, true);
+        xmlHttp.open("POST", url, true);
         xmlHttp.setRequestHeader("Content-Type", "text/plain; charset=UTF-8");
         xmlHttp.setRequestHeader("Cookie", cookie);
-        xmlHttp.send(dateVariableFormat + Interviewer.lastUpdatingDate.millisecond);
+        xmlHttp.send("request=update-data-table");
     }
 
-    static deleteOldTableValues(tableId) {
-        let element = document.getElementById(tableId);
-        let prefix = "tr";
-        let postfix = 0;
-        let childElement = document.getElementById(prefix + String(postfix));
-        while (childElement !== null) {
-            element.parentNode.removeChild(childElement);
-            postfix++;
-            childElement = document.getElementById(prefix + String(postfix));
+    static deleteOldDataSectionValues(dataSectionId) {
+        let childElements = window.document.getElementById(dataSectionId).childNodes;
+        for (let i = 0; i < childElements.length; i++) {
+            window.document.removeChild(childElements[i]);
         }
     }
 
-    static navigateTo(URL, cookie) {
+    static openElement(url, request) {
         let xmlHttp = new XMLHttpRequest();
-        xmlHttp.open("POST", URL, true);
-        xmlHttp.setRequestHeader("Content-Type", "text/plain; charset=UTF-8");
-        xmlHttp.setRequestHeader("Cookie", cookie);
-        xmlHttp.send();
+        xmlHttp.onload = function () {
+            window.open().document.writeln(xmlHttp.responseText);
+        };
+        xmlHttp.open("POST", url, true);
+        xmlHttp.send(request);
     }
 }
