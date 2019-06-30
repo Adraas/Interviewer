@@ -1,8 +1,6 @@
 package ru.wkn;
 
 import lombok.Getter;
-import ru.wkn.entities.user.User;
-import ru.wkn.exceptions.PersistenceException;
 import ru.wkn.repository.service.IService;
 import ru.wkn.repository.service.IServiceFactory;
 import ru.wkn.repository.service.ServiceFactory;
@@ -78,17 +76,5 @@ public class RepositoryFacade {
     public void setEntityInstanceType(EntityInstanceType entityInstanceType) {
         this.entityInstanceType = entityInstanceType;
         serviceReinitialize();
-    }
-
-    @SuppressWarnings(value = {"unchecked"})
-    public static void main(String[] args) {
-        User user = new User("name", "email", "password", "cookie");
-        RepositoryFacade repositoryFacade =
-                new RepositoryFacade("questionnaires_h2_entity_manager", EntityInstanceType.USER);
-        try {
-            repositoryFacade.getService().create(user);
-        } catch (PersistenceException e) {
-            e.printStackTrace();
-        }
     }
 }
