@@ -6,11 +6,10 @@
     <title>Interviewer</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/general.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/left-navigation-panel.css">
-    <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
     <script rel="script" type="text/javascript" src="${pageContext.request.contextPath}/js/Interviewer.js"></script>
     <script rel="script" type="text/javascript" src="${pageContext.request.contextPath}/js/Cookies.js"></script>
 </head>
-<body onload="Interviewer.updateTableValues('/catalog', 'catalog_table', Cookies.getCookie(this, 'user'))">
+<body onload="Interviewer.updateDataSectionValues('/my_groups', Cookies.getCookie(this, 'user'))">
 <input type="checkbox" id="nav-toggle" hidden>
 <nav class="nav">
     <label for="nav-toggle" class="nav-toggle" onclick></label>
@@ -18,16 +17,16 @@
         <a href="">Interviewer</a>
     </h2>
     <ul>
-        <li><a href onclick="Interviewer.navigateTo('/catalog', Cookies.getCookie(this, 'user'))">
+        <li><a href="${pageContext.request.contextPath}/secured/catalog.jsp">
             Каталог анкет
         </a>
-        <li><a href onclick="Interviewer.navigateTo('/questionnaires', Cookies.getCookie(this, 'user'))">
+        <li><a href="${pageContext.request.contextPath}/secured/my_questionnaires.jsp">
             Мои анкеты
         </a>
-        <li><a href onclick="Interviewer.navigateTo('/groups', Cookies.getCookie(this, 'user'))">
+        <li><a href="${pageContext.request.contextPath}/secured/my_groups.jsp">
             Мои группы
         </a>
-        <li><a href onclick="Interviewer.navigateTo('/reports', Cookies.getCookie(this, 'user'))">
+        <li><a href="${pageContext.request.contextPath}/secured/my_reports.jsp">
             Мои отчеты
         </a>
     </ul>
@@ -38,8 +37,8 @@
         <header>
             <h1>Мои группы</h1>
         </header>
-        <section>
-            <table id="catalog_table"></table>
+        <section id="data_section">
+            <p>Здесь пока ничего нет</p>
         </section>
         <hr>
         <footer>
