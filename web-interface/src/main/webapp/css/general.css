@@ -5,9 +5,6 @@
     box-sizing: border-box;
 }
 
-/**
- * Максимальная высота базового контейнера
- */
 html {
     font-size: 100%;
 }
@@ -26,8 +23,6 @@ body {
     background-color: #ffd500;
 }
 
-
-/* изменяем полоcу прокрутки */
 
 ::-webkit-scrollbar {
     width: .65em;
@@ -155,4 +150,16 @@ a {
     border: 2px solid #00C851;
     color: #007E33 !important;
     background-color: transparent;
+}
+
+table {
+    border: 1px solid grey;
+}
+
+th {
+    border: 1px solid black;
+}
+
+td {
+    border: 1px solid #333333;
 }
