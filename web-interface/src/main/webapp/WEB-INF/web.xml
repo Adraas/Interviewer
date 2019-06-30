@@ -87,13 +87,13 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>current_report</servlet-name>
-        <servlet-class>ru.wkn.servlets.CurrentReportServlet</servlet-class>
+        <servlet-name>current_questionnaire_group_editing</servlet-name>
+        <servlet-class>ru.wkn.servlets.CurrentQuestionnaireGroupServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>current_report</servlet-name>
-        <url-pattern>/current_report</url-pattern>
+        <servlet-name>current_questionnaire_group_editing</servlet-name>
+        <url-pattern>/current_questionnaire_group_editing</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -104,16 +104,6 @@
     <servlet-mapping>
         <servlet-name>questionnaire_editing</servlet-name>
         <url-pattern>/questionnaire_editing</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>report_editing</servlet-name>
-        <servlet-class>ru.wkn.servlets.ReportEditingServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>report_editing</servlet-name>
-        <url-pattern>/report_editing</url-pattern>
     </servlet-mapping>
 
     <filter>
