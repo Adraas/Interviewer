@@ -6,6 +6,7 @@
     <title>Interviewer</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/general.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/left-navigation-panel.css">
+    <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
     <script rel="script" type="text/javascript" src="${pageContext.request.contextPath}/js/Interviewer.js"></script>
     <script rel="script" type="text/javascript" src="${pageContext.request.contextPath}/js/Cookies.js"></script>
 </head>
