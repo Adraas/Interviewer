@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -31,24 +31,40 @@ public class CatalogServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String cookie = CookieManager.getCookie(req);
         checkCookie(cookie, resp);
-        String lastUpdatingDateAsString = (String) req.getAttribute("last-updating-date");
+        String attributeDate = "last-updating-date";
+        String lastUpdatingDateAsString = (String) req.getAttribute(attributeDate);
         if (lastUpdatingDateAsString != null && !lastUpdatingDateAsString.trim().equals("")) {
-            updateLastUpdatingDate(cookie, Date.valueOf(lastUpdatingDateAsString), resp);
+            updateLastUpdatingDate(cookie, new Date(Long.valueOf(lastUpdatingDateAsString)), resp, attributeDate);
         } else {
-            updateLastUpdatingDate(cookie, new Date(System.currentTimeMillis()), resp);
+            updateLastUpdatingDate(cookie, new Date(System.currentTimeMillis()), resp, attributeDate);
         }
     }
 
-    private void updateLastUpdatingDate(String cookie, Date lastUpdatingDate, HttpServletResponse resp)
-            throws IOException {
+    private void updateLastUpdatingDate(String cookie, Date lastUpdatingDate, HttpServletResponse resp,
+                                        String attributeDate) throws IOException {
+        String attributeTable = "response-table";
         if (lastUpdatingDates.containsKey(cookie)) {
             if (!lastUpdatingDates.get(cookie).equals(lastUpdatingDate)) {
-                resp.getWriter().print(generateAnswerTable());
+                resp.getWriter().print(attributeDate
+                        .concat("=")
+                        .concat(String.valueOf(System.currentTimeMillis()))
+                        .concat("&")
+                        .concat(attributeTable)
+                        .concat("=")
+                        .concat(generateAnswerTable()));
+            } else {
+                resp.getWriter().println();
             }
         } else {
             Date newUpdatingDate = new Date(System.currentTimeMillis());
             lastUpdatingDates.put(cookie, newUpdatingDate);
-            resp.getWriter().print(generateAnswerTable());
+            resp.getWriter().print(attributeDate
+                    .concat("=")
+                    .concat(String.valueOf(System.currentTimeMillis()))
+                    .concat("&")
+                    .concat(attributeTable)
+                    .concat("=")
+                    .concat(generateAnswerTable()));
         }
     }
 
@@ -67,7 +83,8 @@ public class CatalogServlet extends HttpServlet {
         }
         Collection<Questionnaire> questionnairesForDeleting = setQuestionnaires
                 .stream()
-                .map(ImmutablePair::getQObject).collect(Collectors.toList());
+                .map(ImmutablePair::getQObject)
+                .collect(Collectors.toList());
         for (ImmutablePair<Questionnaire, String> immutablePair : setQuestionnaires) {
             questionnairesForDeleting.add(immutablePair.getQObject());
         }
