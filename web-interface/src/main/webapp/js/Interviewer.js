@@ -10,8 +10,9 @@ class Interviewer {
                 let responseValue = response.split("response-data=");
                 if (responseValue.length === 2) {
                     let dataValue = responseValue[1].split("")[1];
-                    // TODO: fix casting String to Node
-                    document.getElementById(dataSectionId).appendChild(dataValue);
+                    let parser = new DOMParser();
+                    let elementFromString = parser.parseFromString(dataValue, "text/html");
+                    document.getElementById(dataSectionId).appendChild(elementFromString);
                 }
             }
         };
