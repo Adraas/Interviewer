@@ -24,7 +24,7 @@ class Entrance {
     }
 
     // TODO: check onload overriding
-    static doRequest(data, header, URL, requestType) {
+    static doRequest(data, header, url, requestType) {
         let xmlHttp = new XMLHttpRequest();
         let xmlHttpUpload = xmlHttp.upload;
         xmlHttpUpload.onprogress = function () {
@@ -37,7 +37,7 @@ class Entrance {
             } else {
                 if (status >= 200 && status < 300) {
                     window.document.close();
-                    window.open().window.document.writeln(xmlHttp.responseText);
+                    window.open().document.writeln(xmlHttp.responseText);
                 } else {
                     let response = xmlHttp.responseText;
                     if (response.trim() !== "") {
@@ -46,7 +46,7 @@ class Entrance {
                 }
             }
         };
-        xmlHttp.open(requestType, URL, false);
+        xmlHttp.open(requestType, url, false);
         xmlHttp.setRequestHeader("Content-Type", "text/plain; charset=UTF-8");
         if (header == null) {
             xmlHttp.send(data);
